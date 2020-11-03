@@ -67,17 +67,24 @@ Oracle Corporation,  entreprise américaine de technologie informatique créée 
 ### A5. Facteurs qualité
 
 1. Efficacité de stockage
-2. 
+2. Efficacité d'exécution
 3.
 
 ### A6. Indicateurs qualité
 
-1. Capacité fonctionnelle
-2. Fiabilité
+**Efficacité de stockage**
+Indicateurs de base
+- Capacité fonctionnelle
+- Fiabilité
+Indicateurs dérivés
+- Efficacité
 
-1. Efficacité
-2.
-3.
+**Efficacité d'exécution**
+Indicateurs de base
+- Fiabilité
+- Facilité d'utilisation
+Indicateurs dérivés
+- Efficacité
 
 ### A7. Références théoriques
 
