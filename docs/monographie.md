@@ -34,8 +34,8 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 6. Mémoire
 7. Pattern
 8. Database
-9.
-10.
+9. Disque
+10. Chargement
 
 
 ### A2. Webographie
