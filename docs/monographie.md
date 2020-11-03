@@ -46,7 +46,14 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 
 ### A3. Bibliographie
 
-1. (nom + section)
+1. **Architecture of Computing Systems - ARCS 2013**, *Hana Kubátová, Christian Hochberger, Martin Daněk, Bernhard Sick (Eds)*, 26th International Conference Prague, Czech Republic, February 2013, Springer
+
+<ins>Sections d'intérêt</ins>
+ 
+ * A Multi-core Memory Organization for 3-D DRAM as Main Memory, page 62
+ * An Application-Aware  Cache  Replacement  Policy  forLast-Level Caches, page 207
+ * Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256
+ 
 2. **The cache memory book, cache data and cache tag memories** Handy, Jim. Morgan Kaufmann Publishers In, 2nd edition édition 1998.
 3.
 
