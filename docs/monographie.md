@@ -34,8 +34,8 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 6. Mémoire
 7. Pattern
 8. Database
-9. Disque
-10. Chargement
+9.
+10.
 
 
 ### A2. Webographie
@@ -53,7 +53,7 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 ### A4. Acteurs
 
 1. (Organisation + 10 lignes description + contribution à la technique étudiée)
-2. Oracle Corporation,  
+2. Oracle Corporation,  entreprise américaine de technologie informatique créée en 1977, est reconnue pour ses systèmes de gestion de base de données. Elle publia en 2014 un livret blanc sur son nouveau système de bases de données en mémoire, "Oracle Database In-Memory". Avec Oracle Database In-Memory, une seule base de données peut désormais prendre en charge efficacement des charges de travail mixtes, offrant ainsi des performances optimales pour les transactions tout en prenant en charge simultanément l'analyse et le reporting en temps réel.  
 3.
 
 ### A5. Facteurs qualité
