@@ -47,7 +47,7 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 ### A3. Bibliographie
 
 1. (nom + section)
-2.
+2. **The cache memory book, cache data and cache tag memories** Handy, Jim. Morgan Kaufmann Publishers In, 2nd edition édition 1998.
 3.
 
 ### A4. Acteurs
@@ -73,16 +73,20 @@ Oracle Corporation,  entreprise américaine de technologie informatique créée 
 ### A6. Indicateurs qualité
 
 **Efficacité de stockage**
+
 Indicateurs de base
 - Capacité fonctionnelle
 - Fiabilité
+
 Indicateurs dérivés
 - Efficacité
 
 **Efficacité d'exécution**
+
 Indicateurs de base
 - Fiabilité
 - Facilité d'utilisation
+
 Indicateurs dérivés
 - Efficacité
 
