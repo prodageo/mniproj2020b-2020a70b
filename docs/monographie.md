@@ -33,7 +33,7 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 5. Optimisation
 6. Mémoire
 7. Pattern
-8. Optimisation
+8. Database
 9.
 10.
 
@@ -53,7 +53,7 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 ### A4. Acteurs
 
 1. (Organisation + 10 lignes description + contribution à la technique étudiée)
-2. Oracle Corporation, 
+2. Oracle Corporation,  
 3.
 
 ### A5. Facteurs qualité
