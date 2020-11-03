@@ -32,8 +32,8 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 4. Hero image
 5. Optimisation
 6. Mémoire
-7. 
-8.
+7. Pattern
+8. Optimisation
 9.
 10.
 
@@ -41,7 +41,7 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 ### A2. Webographie
 
 1. [Oracle In-Memory Database Cache Concepts](https://docs.oracle.com/cd/E13085_01/timesten.1121/e13073/concepts.htm#TTCAC117)
-2.
+2. [Apache Ignite In-Memory Database](https://ignite.apache.org/use-cases/in-memory-database.html)
 3.
 
 ### A3. Bibliographie
@@ -53,7 +53,7 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 ### A4. Acteurs
 
 1. (Organisation + 10 lignes description + contribution à la technique étudiée)
-2.
+2. Oracle Corporation, 
 3.
 
 ### A5. Facteurs qualité
