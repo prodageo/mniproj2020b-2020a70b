@@ -104,7 +104,7 @@ Indicateurs dérivés
 | 1      | Caching            | Optimisation des performances lors du chargement repeté d'une ressource              |
 | 2      | Cache-Aside        | Maintien de la cohérence entre le cache et la ressource distante              |
 | 3      | Garbage Collection | Garantie de l'absence de fuites de mémoire              |
-| 4      | Garbage Compactor  | Défragmentation de la mémoire libérée              |
+| 4      | Garbage Compactor  | Défragmentation et récupération de la mémoire libérée              |
 
 
 **Caching**
@@ -114,7 +114,10 @@ Indicateurs dérivés
 **Garbage Collection**
 
 **Garbage Compactor**
-Ce pattern est une variante du "Garbage Collection Pattern". Tout comme le Garbage Collection Pattern
+
+Ce pattern est une variante du "Garbage Collection Pattern". Tout comme le Garbage Collection Pattern, il traite la libération de la mémoire, mais en gérant la défragmentation automatique et récupération de la mémoire libérée pour qu'elle commence alors comme un bloc contigu.
+
+Ce pattern est lancé de la même manière qu'un "Mark and sweep" garbage collector. Lorsqu'il recherche l'espace objet à partir des objets racine, il copie tous les objets vivants qu'il trouve dans un autre espace mémoire. Cependant, il est plus efficace que le mark and sweep car une seule phase suffit, et il élimine également la fragmentation de la mémoire car il comprime la mémoire en déplaçant les objets référencés.
 
 ## Partie B
 
