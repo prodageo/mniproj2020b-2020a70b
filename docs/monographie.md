@@ -8,7 +8,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
  - Code du sujet : 70B
  - Code de l'alliance : 2020A70B 
  - Liste des équipes
-   - E09 - {Nom équipe 1 _(Cache-cache)_}
+   - E09 - Cache-cache
      - Beaugeard, Aurélie (abeaugeard)
      - Campbell, Dylan (d-campbell)
      - Fajardo Luis, Lucia (luciaFajardo)
@@ -112,6 +112,13 @@ Indicateurs dérivés
 **Cache-Aside**
 
 **Garbage Collection**
+
+Le Garbage Collection Pattern traite les défauts d'accès à la mémoire de manière propre et simple pour le programmeur d'applications. L'implémentation standard de ce modèle ne résout pas le problème de la fragmentation de la mémoire (voir Garbage Collector) mais il permet au système de fonctionner correctement face à une mémoire mal gérée. 
+
+Les fuites de mémoire se produisent lorsque les programmeurs se trompent sur le moment et la manière dont la mémoire doit être désallouée. La solution offerte par le Garbage Collection Pattern supprime les défauts en mettant le programmeur hors de la boucle - le programmeur ne désalloue plus explicitement la mémoire. En retirant le programmeur, cette source de défauts disparaît.
+
+Le Garbage Collection Pattern effectue une « collecte de déchets » par marquage et balayage. En effet, il existe une phase dite de « marquage » suivie d’une phase de « récupération ». Lors de la création d’objets, ces derniers vont être marqués comme "objets vivants". La phase de marquage s’exécute suite à un manque de mémoire ou à une demande explicite d'effectuer le ramassage des ordures. Lors du marquage, on vérifie que tous les objets stockés sont vivants. Ainsi, les objets n’ayant pas pu être atteints sont marqués comme morts. La phase de balayage intervient à ce moment là pour récupérer les objets morts et libérer de l’espace mémoire.
+
 
 **Garbage Compactor**
 
