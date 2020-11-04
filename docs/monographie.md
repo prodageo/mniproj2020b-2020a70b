@@ -8,7 +8,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
  - Code du sujet : 70B
  - Code de l'alliance : 2020A70B 
  - Liste des équipes
-   - E09 - {Nom équipe 1 _(if any)_}
+   - E09 - {Nom équipe 1 _(Cache-cache)_}
      - Beaugeard, Aurélie (abeaugeard)
      - Campbell, Dylan (d-campbell)
      - Fajardo Luis, Lucia (luciaFajardo)
@@ -98,6 +98,23 @@ Indicateurs dérivés
 - Efficacité
 
 ### A7. Références théoriques
+
+| Numéro | Pattern            | Problème géré |
+|--------|--------------------|---------------|
+| 1      | Caching            | Optimisation des performances lors du chargement repeté d'une ressource              |
+| 2      | Cache-Aside        | Maintien de la cohérence entre le cache et la ressource distante              |
+| 3      | Garbage Collection | Garantie de l'absence de fuites de mémoire              |
+| 4      | Garbage Compactor  | Défragmentation de la mémoire libérée              |
+
+
+**Caching**
+
+**Cache-Aside**
+
+**Garbage Collection**
+
+**Garbage Compactor**
+Ce pattern est une variante du "Garbage Collection Pattern". Tout comme le Garbage Collection Pattern
 
 ## Partie B
 
