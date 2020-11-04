@@ -122,9 +122,11 @@ Le Garbage Collection Pattern effectue une « collecte de déchets » par marqua
 
 **Garbage Compactor**
 
-Ce pattern est une variante du "Garbage Collection Pattern". Tout comme le Garbage Collection Pattern, il traite la libération de la mémoire, mais en gérant la défragmentation automatique et récupération de la mémoire libérée pour qu'elle commence alors comme un bloc contigu.
+Lors de la fragmentation, la mémoire libre est divisée en blocs non contigus. Or, la plupart des applications qui allouent et libèrent dynamiquement des blocs finissent par se retrouver dans une situation où, bien que la mémoire totale soit suffisante pour répondre à la demande d'allocation, il n'y a pas un seul bloc contigu suffisamment grand, entraînant l'échec de l'application. Le Garbage Collection Pattern répond à cette problématique.
 
-Ce pattern est lancé de la même manière qu'un "Mark and sweep" garbage collector. Lorsqu'il recherche l'espace objet à partir des objets racine, il copie tous les objets vivants qu'il trouve dans un autre espace mémoire. Cependant, il est plus efficace que le mark and sweep car une seule phase suffit, et il élimine également la fragmentation de la mémoire car il comprime la mémoire en déplaçant les objets référencés.
+Le Garbage Collection Pattern est une variante du "Garbage Collection Pattern". Tout comme lui, il traite la libération de la mémoire, mais en gérant à la fois la défragmentation et récupération automatique de la mémoire libérée pour qu'elle commence alors comme un bloc contigu.
+
+Il atteint cet objectif en maintenant deux segments de mémoire dans le tas. Lors de la collecte des déchets, les objets vivants sont déplacés d'un segment à l'autre, de sorte que dans le segment cible, les objets soient juxtaposés l'un à côté de l'autre. La mémoire libre est ainsi sous la forme d'un seul grand bloc contigu.
 
 ## Partie B
 
