@@ -42,20 +42,27 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 
 1. [Oracle In-Memory Database Cache Concepts](https://docs.oracle.com/cd/E13085_01/timesten.1121/e13073/concepts.htm#TTCAC117)
 2. [Apache Ignite In-Memory Database](https://ignite.apache.org/use-cases/in-memory-database.html)
-3.
+3. [Amazon : What is caching and how it works](https://aws.amazon.com/caching/?nc1=h_ls)
 
 ### A3. Bibliographie
 
 1. **Architecture of Computing Systems - ARCS 2013**, *Hana Kubátová, Christian Hochberger, Martin Daněk, Bernhard Sick (Eds)*, 26th International Conference Prague, Czech Republic, February 2013, Springer
 
-<ins>Sections d'intérêt</ins>
- 
- * A Multi-core Memory Organization for 3-D DRAM as Main Memory, page 62
- * An Application-Aware  Cache  Replacement  Policy  forLast-Level Caches, page 207
- * Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256
+    <ins>Sections d'intérêt</ins>
+    
+    * A Multi-core Memory Organization for 3-D DRAM as Main Memory, page 62
+    * An Application-Aware  Cache  Replacement  Policy  forLast-Level Caches, page 207
+    * Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256
  
 2. **The cache memory book, cache data and cache tag memories** Handy, Jim. Morgan Kaufmann Publishers In, 2nd edition édition 1998.
-3.
+
+
+3. **Supercomputing systems: architectures, design, and performance**, *Svetlana P. Kartashev, Steven I. Kartashev, Von Nostrand Reinhold, cop.1990*
+   
+    <ins>Sections d'intérêt</ins>
+
+    * Cache coherence in mind system: Petri net model for minimal state solution.
+    * Optimization of hierarchical memory systems for high-speed computers
 
 ### A4. Acteurs
 
@@ -69,13 +76,19 @@ Google a développé un système de cache appliqué aux images, à présent int�
 
 Oracle Corporation,  entreprise américaine de technologie informatique créée en 1977, est reconnue pour ses systèmes de gestion de base de données. Elle publia en 2014 un livret blanc sur son nouveau système de bases de données en mémoire, "Oracle Database In-Memory". Avec Oracle Database In-Memory, une seule base de données peut désormais prendre en charge efficacement des charges de travail mixtes, offrant ainsi des performances optimales pour les transactions tout en prenant en charge simultanément l'analyse et le reporting en temps réel. Cela est possible grâce à son architecture "dual-format" qui permet de conserver les données à la fois dans le format de ligne Oracle existant, pour les opérations OLTP, et dans un nouveau format de colonne purement en mémoire, optimisé pour le traitement analytique. Cela dit, il n'est plus nécessaire que toutes les données soient stockées dans la mémoire, mais seulement les "tables" ou partitions sensibles aux performances. Oracle Database In-Memory permet également aux "data marts" et aux "data warehouses" de fournir davantage d'analyses ad hoc, donnant aux utilisateurs finaux la possibilité d'exécuter plusieurs requêtes orientées métier dans le même temps qu'il fallait auparavant pour exécuter une seule requête. 
 
-3.
+3. **Amazon**
+
+Amazon, créée en Juillet 1994, est l'une des GAFAM, et donc l'une des plus puissantes entreprises du monde. Roi de la vente en ligne, l'entreprise doit gérer un montant colossal de commandes, et donc de données, à chaque instant. Amazon est ainsi confronté en permanence a des soucis de mise à l'échelle de son système, et donc, à des problèmes de caching. 
+
+L'entreprise a en 2019 publié un livre blanc présentant son service web ElastiCache. Celui-ci facilite le déploiement, l'utilisation, et la mise à l'échelle d'un cache de données en mémoire dans le cloud, ce qui permet d'améliorer la performances des applications web via une récupération des informations plus rapide. 
+Ce système se repose sur le déploiement d'un ou plusieurs clusters de cache. Une fois ceux-ci en place, le service automatise de nombreuses tâches administratives, telles que la gestion des stocks, la détection et la correction d'erreurs ou la mise à jour du software. Le système fournit aussi de nombreuses métriques liées aux noeuds de cache afin de pouvoir diagnostiquer les problèmes rapidement. Il est entre autres possible d'être alerté lorsqu'un cache dépasse sa capacité maximale.
+Il est important de noter que ce système n'est pas directement lié à la base de données, ce qui lui octroie une grande flexibilité d'utilisation.
 
 ### A5. Facteurs qualité
 
 1. Efficacité de stockage
 2. Efficacité d'exécution
-3.
+3. Facilité de migration
 
 ### A6. Indicateurs qualité
 
@@ -97,19 +110,39 @@ Indicateurs de base
 Indicateurs dérivés
 - Efficacité
 
+**Facilité de migration**
+
+Indicateurs de base
+- Fiabilité
+- Rendement/Efficacité
+
+Indicateurs dérivés
+- Portabilité
+
 ### A7. Références théoriques
 
 | Numéro | Pattern            | Problème géré |
 |--------|--------------------|---------------|
-| 1      | Caching            | Optimisation des performances lors du chargement repeté d'une ressource              |
+| 1      | Caching            | Optimisation des performances lors du chargement répété d'une ressource              |
 | 2      | Cache-Aside        | Maintien de la cohérence entre le cache et la ressource distante              |
-| 3      | Garbage Collection | Garantie de l'absence de fuites de mémoire              |
+| 3      | Garbage Collection | Garantie de l'absence de fuites mémoire              |
 | 4      | Garbage Compactor  | Défragmentation et récupération de la mémoire libérée              |
 
 
 **Caching**
 
+Le Caching Pattern permet l'optimisation de l'usage des ressources machine lors du chargement répété de données, notamment depuis une source distante. Cela permet l'optimisation des performances de la machines lors des accès à ces données. 
+Ce pattern est utilisé lorsque les ressources qui seront demandées sont prévisibles.
+
+Afin d'atteindre cet objectif, le Caching Pattern stocke les données auquelles la machine a déjà accedé localement, ce qui permet ensuite de les recharger rapidement pour les réutiliser, sans avoir à les redemander auprès de la source distante. Lorsque les ressources stockées ne sont plus nécessaires, elles sont libérées pour gagner en espace mémoire. Elles devront cependant refaire l'objet d'une requêtes à la source pour être rechargées après cela.
+
 **Cache-Aside**
+
+Lors de l'utilisation d'un cache, il serait utopique de penser que les données mises en cache seront toujours conformes aux données distantes, et ce quoiqu'il arrive. Il est très fréquent, notamment lors d'accès concurrents à une ressource, que celle-ci soit modifiée tandis qu'elle se trouve dans le cache d'un utilisateur. C'est le problem que cherche à résoudre le Cache-Aside pattern. 
+
+De nombreux systèmes aujourd'hui contournent ce problème en intégrant des opérations de double lecture et d'écriture différée. Ainsi, les modifications apportées au données du cache sont immédiatement répercutées sur la base de données. Tout cela est possible si l'application récupérant les données établit une référence au cache.
+
+Cependant, dans le cas ou le cache n'intégrerait pas ces fonctionnalités, le pattern Cache-Aside permet d'émuler la double lecture. A la récupération de la donnée distante, une copie de celle-ci est sauvegardée dans le cache. Lors de la mise à jour d'un élément en cache, l'application peut ainsi écrire directement sur la base de données, puis invalider l'élément en cache.
 
 **Garbage Collection**
 
