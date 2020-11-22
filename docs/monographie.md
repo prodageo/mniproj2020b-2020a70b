@@ -201,6 +201,8 @@ Il atteint cet objectif en maintenant deux segments de mémoire dans le tas. Lor
 
 ### B1. Approche technique
 
+Amazon a fourni une documentation assez complète sur les systèmes de cache en général. Il présente notamment [les bonnes pratiques de cache](https://aws.amazon.com/fr/caching/best-practices/) de façon détaillée. Nous nous servons donc de ces informations pour présenter les principales caractéristiques des différentes approches techniques portant sur le sujet des systèmes de cache.
+
 + **Lazy caching ou Cache-aside** : 
 
 Il s'agit de la forme de mise en cache la plus répandue. Elle peut être considérée comme base à toute bonne stratégie de mise en cache. L'idée de base est de ne remplir le cache que lorsqu'un objet est  demandé par l'application. Voici les différentes étapes de cette approche :
@@ -246,6 +248,45 @@ user = get_user(17)
 
 + **Write-through** :
 
+Cette technique est définie comme "cache en écriture" car elle propose une mise à jour en temps réel du cache dès que la base de donnée est soumise à une mise à jour. Ce système de cache doit être utilisé dans un contexte où les données sont très susceptibles d'être demandées mais aussi fréquemment sujettes à des actualisations. Ceci permet d'éviter des oublis inutiles dans la mémoire cache. Cela peut par exemple concerner les données d'un profil utilisateur ou encore les cours boursier, etc.
+
+"Write-through" possède certains avantages sur le "Lazy caching" :
+
++ Performance supérieure quant à la limitation des objets manquants dans le cache. Ceci permet d'éviter l'impression de lenteur d'exécution (d'un point de vue expérience utilisateur) engendrée par l'absence de certains objets dans le cache.
++ Appliction plus vive
++ Tout retard de l'application dépend de la mise à jour des données lancée par l'utilisateur (plus conforme aux attentes de l'utilisateur). 
++ Expiration du cache d'autant plus simplifiée grâce à la constante mise à jour du cache.
+
+Cependant, cette technique présente également quelques points faibles :
+
+-  Le cache peut être rempli d'objets inutiles qui ne sont pas réellement accessibles. Cela peut engendrer une consommation de mémoire supplémentaire et les objets non utilisés risquent d'expulser du cache des objets plus utiles.
+-  La mise à jour répétée de certains enregistrements peut entraîner une forte rotation de la mémoire cache.
+-  Si les noeuds du cache "tombent en panne", nous risquons de nous retrouver avec un cache vide ne pouvant se repeupler par le système du "write-though". Il faudra donc opter pour le cache aside afin de remplir le cache à nouveau.
+
+Voici une illustration de ce système en pseudocode python :
+
+<pre><code># Python
+
+def save_user(user_id, values):
+
+    # Save to DB 
+
+    record = db.query("update users ... where id = ?", user_id, values)
+
+    # Push into cache
+
+    cache.set(user_id, record)
+
+    return record
+</code></pre>
+<pre><code># App code
+
+user = save_user(17, {"name": "Nate Dogg"})
+</code></pre>
+
+<ins>Conclusion</ins>
+
+On observe que ce système apporte certains avantages par rapport au lazy caching suivant le contexte. Cependant, le lazy caching semble incontournable pour palier les problèmes de panne du write-through. Il pourrait donc être judicieux de combiner les deux si l'utilisation du cache write-through porte un intérêt dans notre cas d'utilisation.
 
 + Time-to-live
 + Evictions
