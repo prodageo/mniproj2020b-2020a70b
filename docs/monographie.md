@@ -131,7 +131,9 @@ Indicateurs de base
 - Fiabilité
 
 Indicateurs dérivés
-- Efficacité
+- Efficacité :
+  * Formule : <img src="http://www.sciweavers.org/tex2img.php?eq=%20%5Cfrac%7BS%7D%7BE%7D%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt=" \frac{S}{E} " width="17" height="43" />
+    + Où S est le service rendu par le logiciel et E sont les efforts qu'il faut entreprendre pour le faire fonctionner (la quantité de ressources utilisées par exemple). Ce rapport donne une qualification de l'efficacité
 
 **Efficacité d'exécution**
 
