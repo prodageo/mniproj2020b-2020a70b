@@ -201,20 +201,52 @@ Il atteint cet objectif en maintenant deux segments de mémoire dans le tas. Lor
 
 ### B1. Approche technique
 
-+ **Lazy caching ou Cache-aside** : Il s'agit de la forme de mise en cache la plus répandue. Elle peut être considérée comme base à toute bonne stratégie de mise en cache. L'idée de base est de ne remplir le cache que lorsqu'un objet est  demandé par l'application. Voici les différentes étapes de cette approche :
-  1. L'application reçoit une requête de données, par exemple les taux d'échange de diférentes monnaies
-  2. L'application va vérifier si cet objet qu'il a reçu se trouve dans le cache ou non
-     + Si oui, c'est l'objet stocké dans le cache qui est renvoyé et le flux d'appel se termine.
-     + Dans le cas contraire, la base de données est interrogée afin de trouver l'objet requis. Celui-ci est alors stocké dans le cache puis renvoyé.
++ **Lazy caching ou Cache-aside** : 
 
- Les avantages de cette méthode par rapport aux autres méthodes sont multiples :
+Il s'agit de la forme de mise en cache la plus répandue. Elle peut être considérée comme base à toute bonne stratégie de mise en cache. L'idée de base est de ne remplir le cache que lorsqu'un objet est  demandé par l'application. Voici les différentes étapes de cette approche :
+
+ 1. L'application reçoit une requête de données, par exemple les taux d'échange de diférentes monnaies
+ 2. L'application va vérifier si cet objet qu'il a reçu se trouve dans le cache ou non
+  + Si oui, c'est l'objet stocké dans le cache qui est renvoyé et le flux d'appel se termine.
+  + Dans le cas contraire, la base de données est interrogée afin de trouver l'objet requis. Celui-ci est alors stocké dans le cache puis renvoyé.
+  
+<ins>Les avantages de cette méthode par rapport aux autres méthodes sont multiples :</ins>
 
 * D'abord, le cache ne contient que les objets réellement demandés par l'application, ceci permettant la gestion de la taille du cache. En effet, les nouveaux objets ne sont ajoutés au cache qu'en cas de besoin. 
 * Le développement de l'application peut entraîner la mise en ligne de nouveaux *noeuds de cache*. La technique cache-aside permet le remplissage automatique de ces nouveaux noeuds à chaque fois qu'un objet inconnu est demandé.
 * L'expiration du cache est simplement géré par la suppression de l'objet mis en cache. 
 * Cette technique étant largement répandue, de nombreuses applications web ou frameworks proposent une prise en charge instantanée de celle-ci. 
 
-+ Write-through
+<ins>Illustration du cache aside en Python</ins>
+
+<pre><code># Python
+
+def get_user(user_id):
+
+    # Check the cache
+
+    record = cache.get(user_id)
+
+    if record is None:       
+
+       # Run a DB query       
+
+       record = db.query("select * from users where id = ?",user_id)
+
+       # Populate the cache
+
+       cache.set(user_id, record)
+
+    return record
+</code></pre>
+<pre><code># App code
+
+user = get_user(17)
+</code></pre>
+
++ **Write-through** :
+
+
 + Time-to-live
 + Evictions
 + the thundering herd
