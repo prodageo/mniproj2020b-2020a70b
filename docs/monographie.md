@@ -54,6 +54,8 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 
 * **Servlet** : "Un ou une servlet est une classe Java qui permet de créer dynamiquement des données au sein d'un serveur HTTP. Ces données sont le plus généralement présentées au format HTML, mais elles peuvent également l'être au format XML ou tout autre format destiné aux navigateurs web." [Wikipedia](https://www.google.com/search?client=firefox-b-d&q=servlet)
 
+* **Mémoire Vive (RAM)** : "La mémoire vive, parfois abrégé avec l'acronyme anglais RAM (Random Access Memory), est la mémoire informatique dans laquelle peuvent être enregistrées les informations traitées par un appareil informatique. On écrit mémoire vive par opposition à la mémoire morte." [Wikipedia](https://fr.wikipedia.org/wiki/M%C3%A9moire_vive)
+
 ### A1m. Mot-clés
 
 1. Caches
