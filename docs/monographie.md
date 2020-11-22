@@ -201,8 +201,7 @@ Il atteint cet objectif en maintenant deux segments de mémoire dans le tas. Lor
 
 ### B1. Approche technique
 
-1. **Lazy caching ou Cache-aside** : Il s'agit de la forme de mise en cache la plus répandue. Elle peut être considérée comme base à toute bonne stratégie de mise en cache. L'idée de base est de ne remplir le cache que lorsqu'un objet est  demandé par l'application. Voici les différentes étapes de cette approche :
-
++ **Lazy caching ou Cache-aside** : Il s'agit de la forme de mise en cache la plus répandue. Elle peut être considérée comme base à toute bonne stratégie de mise en cache. L'idée de base est de ne remplir le cache que lorsqu'un objet est  demandé par l'application. Voici les différentes étapes de cette approche :
   1. L'application reçoit une requête de données, par exemple les taux d'échange de diférentes monnaies
   2. L'application va vérifier si cet objet qu'il a reçu se trouve dans le cache ou non
      + Si oui, c'est l'objet stocké dans le cache qui est renvoyé et le flux d'appel se termine.
@@ -215,10 +214,10 @@ Il atteint cet objectif en maintenant deux segments de mémoire dans le tas. Lor
 * L'expiration du cache est simplement géré par la suppression de l'objet mis en cache. 
 * Cette technique étant largement répandue, de nombreuses applications web ou frameworks proposent une prise en charge instantanée de celle-ci. 
 
-2. Write-through
-3. Time-to-live
-4. Evictions
-5. the thundering herd
++ Write-through
++ Time-to-live
++ Evictions
++ the thundering herd
 
 ### B2. Solutions technologiques concurrentes
 
