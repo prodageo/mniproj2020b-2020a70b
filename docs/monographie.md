@@ -201,7 +201,7 @@ Il atteint cet objectif en maintenant deux segments de mémoire dans le tas. Lor
 
 ### B1. Approche technique
 
-Amazon a fourni une documentation assez complète sur les systèmes de cache en général. Il présente notamment [les bonnes pratiques de cache](https://aws.amazon.com/fr/caching/best-practices/) de façon détaillée. Nous nous servons donc de ces informations pour présenter les principales caractéristiques des différentes approches techniques portant sur le sujet des systèmes de cache.
+Amazon a fourni une documentation assez complète sur les systèmes de cache en général. Il présente notamment [les bonnes pratiques de cache](https://aws.amazon.com/fr/caching/best-practices/) de façon détaillée. Nous nous servons donc de ces informations pour présenter les principales caractéristiques des différentes approches techniques portant sur les systèmes de cache.
 
 + **Lazy caching ou Cache-aside** : 
 
