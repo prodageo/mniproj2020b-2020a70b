@@ -15,7 +15,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
      
   **Tableau de suivi des versions**
   
-| Version | Date de modification            | Modification apportée |
+| Version | Date de modification            | Modification(s) apportée(s) |
 |--------|--------------------|---------------|
 | 0.0 | 05/11/2020 | Réalisation intégrale de la première version |
 | 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce + séparation Glossaire et mot-clés + définitions dans le Glossaire + suppression du mot-clé *hero image* dans les mots-clés pour remplacement par *Stockage* + qualification de la référence Oracle In-Memory Database Cache Concepts dans la Webographie + justification du facteur "Efficacité de Stockage"+ ajout de la formule de l'indicateur dérivé *Efficacité* + Ajout de 4 approches techniques dans B1. Description de deux d'entre elles|
