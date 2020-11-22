@@ -18,7 +18,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | Version | Date de modification            | Modification apportée |
 |--------|--------------------|---------------|
 | 0.0 | 05/11/2020 | Réalisation intégrale de la première version |
-| 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce + séparation Glossaire et mot-clés + définitions dans le Glossaire + suppression du mot-clé *hero image* dans les mots-clés pour remplacement par *Stockage* + qualification de la référence Oracle In-Memory Database Cache Concepts dans la Webographie|
+| 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce + séparation Glossaire et mot-clés + définitions dans le Glossaire + suppression du mot-clé *hero image* dans les mots-clés pour remplacement par *Stockage* + qualification de la référence Oracle In-Memory Database Cache Concepts dans la Webographie + justification du facteur "Efficacité de Stockage"|
 
 ## Questions d'amorce
 
@@ -116,8 +116,10 @@ Il est important de noter que ce système n'est pas directement lié à la base 
 
 ### A5. Facteurs qualité
 
-1. Efficacité de stockage
+1. **Efficacité de stockage** : "Propriété d'un logiciel qui minimise la place mémoire nécessaire à une opération." [ProgYSM](https://yansanmo.progysm.com/document/93_logiqualdef.htm). Cette définition suffit à justifier ce choix car notre problématique porte exactement sur la minimisation de la place mémoire nécessaire à une opération.
+
 2. Efficacité d'exécution
+
 3. Facilité de migration
 
 ### A6. Indicateurs qualité
