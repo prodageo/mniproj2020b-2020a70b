@@ -12,7 +12,24 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
      - Beaugeard, Aurélie (abeaugeard)
      - Campbell, Dylan (d-campbell)
      - Fajardo Luis, Lucia (luciaFajardo)
+     
+  **Tableau de suivi des versions**
   
+| Version | Date de modification            | Modification apportée |
+|--------|--------------------|---------------|
+| 0.0 | 05/11/2020 | Réalisation intégrale de la première version |
+| 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce|
+
+## Questions d'amorce
+
+ <ins>Définition des termes suivants : </ins>
+ 
+ + **memory reclamation mechanism** :
+ + **garbage collection**
+ + **JEP (dans le monde Java)** : 
+ + **classe WeakHashMap dans java.util** : Implémentation de l'interface Map de java.util basée sur une table de hachage, avec des clés dites "faibles". Une entrée dans un WeakHashMap sera automatiquement supprimée lorsque sa clé n'est plus utilisée. Plus précisément, la présence d'un mapping pour une clé donnée n'empêchera pas à la clé d'être jetée par le ramasseur d'ordures, c'est-à-dire rendue finalisable, finalisée, puis récupérée. Lorsqu'une clé a été jetée, son entrée est effectivement retirée de la Map, de sorte que cette classe se comporte quelque peu différemment des autres implémentations Map de Java. (définition donnée par la [documentation officielle de Java](https://docs.oracle.com/javase/7/docs/api/java/util/WeakHashMap.html))
+ + **distributed in-memory data cache** : La "distributed in-memory data cache" ou en français "mise en cache distribuée en mémoire" n'est rien d'autre qu'un cache réparti sur différents nœuds. Il rend les données hautement disponibles pour la ou les applications qui les utilisent. Il s'agit généralement de magasins de clés/valeurs qui prennent en charge les opérations standard put/get ainsi que les capacités de partitionnement, de réplication ou de sauvegarde des données. Par exemple , [Apache](https://ignite.apache.org/use-cases/in-memory-cache.html) propose ce genre de service.
+
 ## Partie A
 
 ### A0 : Introduction
@@ -76,7 +93,7 @@ Google a développé un système de cache appliqué aux images, à présent int�
 
 Oracle Corporation,  entreprise américaine de technologie informatique créée en 1977, est reconnue pour ses systèmes de gestion de base de données. Elle publia en 2014 un livret blanc sur son nouveau système de bases de données en mémoire, "Oracle Database In-Memory". Avec Oracle Database In-Memory, une seule base de données peut désormais prendre en charge efficacement des charges de travail mixtes, offrant ainsi des performances optimales pour les transactions tout en prenant en charge simultanément l'analyse et le reporting en temps réel. Cela est possible grâce à son architecture "dual-format" qui permet de conserver les données à la fois dans le format de ligne Oracle existant, pour les opérations OLTP, et dans un nouveau format de colonne purement en mémoire, optimisé pour le traitement analytique. Cela dit, il n'est plus nécessaire que toutes les données soient stockées dans la mémoire, mais seulement les "tables" ou partitions sensibles aux performances. Oracle Database In-Memory permet également aux "data marts" et aux "data warehouses" de fournir davantage d'analyses ad hoc, donnant aux utilisateurs finaux la possibilité d'exécuter plusieurs requêtes orientées métier dans le même temps qu'il fallait auparavant pour exécuter une seule requête. 
 
-3. **Amazon**
+3. ***Amazon***
 
 Amazon, créée en Juillet 1994, est l'une des GAFAM, et donc l'une des plus puissantes entreprises du monde. Roi de la vente en ligne, l'entreprise doit gérer un montant colossal de commandes, et donc de données, à chaque instant. Amazon est ainsi confronté en permanence a des soucis de mise à l'échelle de son système, et donc, à des problèmes de caching. 
 
