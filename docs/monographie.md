@@ -18,16 +18,20 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | Version | Date de modification            | Modification apportée |
 |--------|--------------------|---------------|
 | 0.0 | 05/11/2020 | Réalisation intégrale de la première version |
-| 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce|
+| 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce + séparation Glossaire et mot-clés + définitions dans le Glossaire + suppression du mot-clé *hero image* dans les mots-clés pour remplacement par *Stockage* + qualification de la référence Oracle In-Memory Database Cache Concepts dans la Webographie|
 
 ## Questions d'amorce
 
  <ins>Définition des termes suivants : </ins>
  
  + **memory reclamation mechanism** :
- + **garbage collection**
+ 
+ + **garbage collection** :
+ 
  + **JEP (dans le monde Java)** : 
+ 
  + **classe WeakHashMap dans java.util** : Implémentation de l'interface Map de java.util basée sur une table de hachage, avec des clés dites "faibles". Une entrée dans un WeakHashMap sera automatiquement supprimée lorsque sa clé n'est plus utilisée. Plus précisément, la présence d'un mapping pour une clé donnée n'empêchera pas à la clé d'être jetée par le ramasseur d'ordures, c'est-à-dire rendue finalisable, finalisée, puis récupérée. Lorsqu'une clé a été jetée, son entrée est effectivement retirée de la Map, de sorte que cette classe se comporte quelque peu différemment des autres implémentations Map de Java. (définition donnée par la [documentation officielle de Java](https://docs.oracle.com/javase/7/docs/api/java/util/WeakHashMap.html))
+ 
  + **distributed in-memory data cache** : La "distributed in-memory data cache" ou en français "mise en cache distribuée en mémoire" n'est rien d'autre qu'un cache réparti sur différents nœuds. Il rend les données hautement disponibles pour la ou les applications qui les utilisent. Il s'agit généralement de magasins de clés/valeurs qui prennent en charge les opérations standard put/get ainsi que les capacités de partitionnement, de réplication ou de sauvegarde des données. Par exemple , [Apache](https://ignite.apache.org/use-cases/in-memory-cache.html) propose ce genre de service.
 
 ## Partie A
@@ -40,13 +44,22 @@ L'objectif de ce projet est de gérer les problèmes liés à l'affichage d'une 
 
 Il faudra minimiser la configuration de la machine nécessaire et éventuellement d’optimiser le temps de traitement. On utilisera des techniques de cache pour optimiser le chargement des ressources en mémoire.
 
-### A1. Glossaire et Mots-clés.
+### A1g. Glossaire 
 
+* **Mémoire cache** : "Une mémoire cache ou antémémoire est, en informatique, une mémoire qui enregistre temporairement des copies de données provenant d'une source, afin de diminuer le temps d'un accès ultérieur (en lecture) d'un matériel informatique (en général, un processeur) à ces données." [Wikipédia](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache)
+
+* **Mémoire distribuée** : "La mémoire d'un système informatique multiprocesseur est dite distribuée lorsque la mémoire est répartie en plusieurs nœuds, chaque portion n'étant accessible qu'à certains processeurs. Un réseau de communication relie les différents nœuds, et l'échange de données doit se faire explicitement par *passage de messages*." [Wikipedia](https://fr.wikipedia.org/wiki/M%C3%A9moire_distribu%C3%A9e)
+
+* **Pattern ou Patron de conception** : "En informatique, et plus particulièrement en développement logiciel, un patron de conception (souvent appelé design pattern) est un arrangement caractéristique de modules, reconnu comme bonne pratique en réponse à un problème de conception d'un logiciel." [Wikipedia](https://fr.wikipedia.org/wiki/Patron_de_conception)
+
+* **Servlet** : "Un ou une servlet est une classe Java qui permet de créer dynamiquement des données au sein d'un serveur HTTP. Ces données sont le plus généralement présentées au format HTML, mais elles peuvent également l'être au format XML ou tout autre format destiné aux navigateurs web." [Wikipedia](https://www.google.com/search?client=firefox-b-d&q=servlet)
+
+### A1m. Mot-clés
 
 1. Caches
 2. Ramasse-miettes
 3. Servlet
-4. Hero image
+4. Stockage
 5. Optimisation
 6. Mémoire
 7. Pattern
@@ -57,9 +70,9 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 
 ### A2. Webographie
 
-1. [Oracle In-Memory Database Cache Concepts](https://docs.oracle.com/cd/E13085_01/timesten.1121/e13073/concepts.htm#TTCAC117)
+1. [Oracle In-Memory Database Cache Concepts](https://docs.oracle.com/cd/E13085_01/timesten.1121/e13073/concepts.htm#TTCAC117) : Explication des concepts fondamentaux du système de cache, présentation des différents type de caches et présentation précise de l'architecture de la base de données cache d'Oracle. (consulté le 22/11/2020)
 2. [Apache Ignite In-Memory Database](https://ignite.apache.org/use-cases/in-memory-database.html)
-3. [Amazon : What is caching and how it works](https://aws.amazon.com/caching/?nc1=h_ls)
+3. [Amazon : What is caching and how it works](https://aws.amazon.com/caching/?nc1=h_ls)//
 
 ### A3. Bibliographie
 
