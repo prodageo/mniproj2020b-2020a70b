@@ -250,20 +250,20 @@ user = get_user(17)
 
 Cette technique est définie comme "cache en écriture" car elle propose une mise à jour en temps réel du cache dès que la base de donnée est soumise à une mise à jour. Ce système de cache doit être utilisé dans un contexte où les données sont très susceptibles d'être demandées mais aussi fréquemment sujettes à des actualisations. Ceci permet d'éviter des oublis inutiles dans la mémoire cache. Cela peut par exemple concerner les données d'un profil utilisateur ou encore les cours boursier, etc.
 
-"Write-through" possède certains avantages sur le "Lazy caching" :
+<ins>"Write-through" possède certains avantages sur le "Lazy caching" :</ins>
 
 + Performance supérieure quant à la limitation des objets manquants dans le cache. Ceci permet d'éviter l'impression de lenteur d'exécution (d'un point de vue expérience utilisateur) engendrée par l'absence de certains objets dans le cache.
 + Appliction plus vive
 + Tout retard de l'application dépend de la mise à jour des données lancée par l'utilisateur (plus conforme aux attentes de l'utilisateur). 
 + Expiration du cache d'autant plus simplifiée grâce à la constante mise à jour du cache.
 
-Cependant, cette technique présente également quelques points faibles :
+<ins>Cependant, cette technique présente également quelques points faibles :</ins>
 
 -  Le cache peut être rempli d'objets inutiles qui ne sont pas réellement accessibles. Cela peut engendrer une consommation de mémoire supplémentaire et les objets non utilisés risquent d'expulser du cache des objets plus utiles.
 -  La mise à jour répétée de certains enregistrements peut entraîner une forte rotation de la mémoire cache.
 -  Si les noeuds du cache "tombent en panne", nous risquons de nous retrouver avec un cache vide ne pouvant se repeupler par le système du "write-though". Il faudra donc opter pour le cache aside afin de remplir le cache à nouveau.
 
-Voici une illustration de ce système en pseudocode python :
+<ins>Voici une illustration de ce système en pseudocode python :</ins>
 
 <pre><code># Python
 
