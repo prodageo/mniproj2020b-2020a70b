@@ -288,9 +288,9 @@ user = save_user(17, {"name": "Nate Dogg"})
 
 On observe que ce système apporte certains avantages par rapport au lazy caching suivant le contexte. Cependant, le lazy caching semble incontournable pour palier les problèmes de panne du write-through. Il pourrait donc être judicieux de combiner les deux si l'utilisation du cache write-through porte un intérêt dans notre cas d'utilisation.
 
-+ Time-to-live
-+ Evictions
-+ the thundering herd
++ **Time-to-live**
++ **Evictions**
++ **The thundering herd**
 
 ### B2. Solutions technologiques concurrentes
 
