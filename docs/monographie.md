@@ -118,39 +118,39 @@ Il est important de noter que ce système n'est pas directement lié à la base 
 
 1. **Efficacité de stockage** : "Propriété d'un logiciel qui minimise la place mémoire nécessaire à une opération." [ProgYSM](https://yansanmo.progysm.com/document/93_logiqualdef.htm). Cette définition suffit à justifier ce choix car notre problématique porte exactement sur la minimisation de la place mémoire nécessaire à une opération.
 
-2. Efficacité d'exécution
+2. **Efficacité d'exécution** :
 
-3. Facilité de migration
+3. **Facilité de migration** :
 
 ### A6. Indicateurs qualité
 
 **Efficacité de stockage**
 
-Indicateurs de base
+<ins>Indicateurs de base</ins>
 - Capacité fonctionnelle
 - Fiabilité
 
-Indicateurs dérivés
+<ins>Indicateurs dérivés</ins>
 - Efficacité :
   * Formule : <img src="http://www.sciweavers.org/tex2img.php?eq=%20%5Cfrac%7BS%7D%7BE%7D%20&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt=" \frac{S}{E} " width="17" height="43" />
     + Où S est le service rendu par le logiciel et E sont les efforts qu'il faut entreprendre pour le faire fonctionner (la quantité de ressources utilisées par exemple). Ce rapport donne une qualification de l'efficacité
 
 **Efficacité d'exécution**
 
-Indicateurs de base
+<ins>Indicateurs de base</ins>
 - Fiabilité
 - Facilité d'utilisation
 
-Indicateurs dérivés
+<ins>Indicateurs dérivés</ins>
 - Efficacité
 
 **Facilité de migration**
 
-Indicateurs de base
+<ins>Indicateurs de base</ins>
 - Fiabilité
 - Rendement/Efficacité
 
-Indicateurs dérivés
+<ins>Indicateurs dérivés</ins>
 - Portabilité
 
 ### A7. Références théoriques
