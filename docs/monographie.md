@@ -40,9 +40,14 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 
 L'objectif de ce projet est de gérer les problèmes liés à l'affichage d'une *hero image* chez une centaine de visiteur simultanément. Il faudra donc exploiter les systèmes de caches et garbage collections. Le cas d'utilisation est le suivant :
 
-"Un web container (au sens Java EE), qu’on appelera **CacheMesHeros**, publie une page d’accueil avec une [hero image](https://envato.com/blog/hero-image-trend-in-web-design/) (de l’ordre de 50 mb). L’image est prise aléatoirement dans un pool de 5 images. Cette image est affichée par une centaine de visiteur simultanémet. On pourra initialiser l’application CacheMesHeros en simplifiant le projet Github suivant : [image-resize-servlet](https://github.com/soulgalore/image-resize-servlet). On peut trouver des images de plusieurs 10aines de Mo sur [WikiPedia](https://stackoverflow.com/questions/33159586/i-need-a-100-mb-test-image) ou simuler une image avec la commande `fallocate -l Image_Size_Here /path/to/image.img`."
+"Un utilisateur désire afficher une image, que l'on appellera ici [hero image](https://envato.com/blog/hero-image-trend-in-web-design/) de l'ordre de 50 mb, choisie aléatoirement dans un pool de 5 images."
 
-Il faudra minimiser la configuration de la machine nécessaire et éventuellement d’optimiser le temps de traitement. On utilisera des techniques de cache pour optimiser le chargement des ressources en mémoire.
+<!--"Un web container (au sens Java EE), qu’on appelera **CacheMesHeros**, publie une page d’accueil avec une [hero image](https://envato.com/blog/hero-image-trend-in-web-design/) (de l’ordre de 50 mb). L’image est prise aléatoirement dans un pool de 5 images. Cette image est affichée par une centaine de visiteur simultanément." 
+On pourra initialiser l’application CacheMesHeros en simplifiant le projet Github suivant : [image-resize-servlet](https://github.com/soulgalore/image-resize-servlet). On peut trouver des images de plusieurs 10aines de Mo sur [WikiPedia](https://stackoverflow.com/questions/33159586/i-need-a-100-mb-test-image) ou simuler une image avec la commande `fallocate -l Image_Size_Here /path/to/image.img`."-->
+
+<!--Il faudra minimiser la configuration de la machine nécessaire et éventuellement d’optimiser le temps de traitement. On utilisera des techniques de cache pour optimiser le chargement des ressources en mémoire.-->
+
+L'objectif ici est de minimiser le temps d'affichage de l'image chez l'utilisateur, ainsi que la configuration de la machine nécessaire, sachant que l'image peut être demandée par une centaine d'utilisateurs simultanément. Nous utiliserons pour ce faire des techniques de cache afin d'optimiser le chargement des ressource en mémoire.
 
 ### A1g. Glossaire 
 
@@ -72,9 +77,9 @@ Il faudra minimiser la configuration de la machine nécessaire et éventuellemen
 
 ### A2. Webographie
 
-1. [Oracle In-Memory Database Cache Concepts](https://docs.oracle.com/cd/E13085_01/timesten.1121/e13073/concepts.htm#TTCAC117) : Explication des concepts fondamentaux du système de cache, présentation des différents type de caches et présentation précise de l'architecture de la base de données cache d'Oracle. (consulté le 22/11/2020)
+1. [Oracle In-Memory Database Cache Concepts](https://docs.oracle.com/cd/E13085_01/timesten.1121/e13073/concepts.htm#TTCAC117) : Explication des concepts fondamentaux du système de cache, présentation des différents type de caches et présentation précise de l'architecture de la base de données cache d'Oracle. (*consulté le 22/11/2020*)
 2. [Apache Ignite In-Memory Database](https://ignite.apache.org/use-cases/in-memory-database.html)
-3. [Amazon : What is caching and how it works](https://aws.amazon.com/caching/?nc1=h_ls)//
+3. [Amazon : What is caching and how it works](https://aws.amazon.com/caching/?nc1=h_ls) : Présentation générale du principe de mise en cache, et mise en avant de ses avantages. Étude des cas d'utilisation de celle-ci. (*consulté le 25/11/2020*)
 
 ### A3. Bibliographie
 
@@ -122,7 +127,7 @@ Il est important de noter que ce système n'est pas directement lié à la base 
 
 2. **Efficacité d'exécution** :
 
-3. **Facilité de migration** :
+3. **Facilité de migration** : Lorsque l'on conçoit un système, il est important de toujours penser à la mise à l'échelle de celui-ci, soit à la migration vers un environnement à plus grande échelle. Le cacheing est une solution efficace pour maintenir un niveau de performance lors du passage d'un système à une échelle plus élevée.
 
 ### A6. Indicateurs qualité
 
@@ -216,7 +221,7 @@ Il s'agit de la forme de mise en cache la plus répandue. Elle peut être consid
 
 * D'abord, le cache ne contient que les objets réellement demandés par l'application, ceci permettant la gestion de la taille du cache. En effet, les nouveaux objets ne sont ajoutés au cache qu'en cas de besoin. 
 * Le développement de l'application peut entraîner la mise en ligne de nouveaux *noeuds de cache*. La technique cache-aside permet le remplissage automatique de ces nouveaux noeuds à chaque fois qu'un objet inconnu est demandé.
-* L'expiration du cache est simplement géré par la suppression de l'objet mis en cache. 
+* L'expiration du cache est simplement gérée par la suppression de l'objet mis en cache. 
 * Cette technique étant largement répandue, de nombreuses applications web ou frameworks proposent une prise en charge instantanée de celle-ci. 
 
 <ins>Illustration du cache aside en Python</ins>
@@ -289,7 +294,31 @@ user = save_user(17, {"name": "Nate Dogg"})
 On observe que ce système apporte certains avantages par rapport au lazy caching suivant le contexte. Cependant, le lazy caching semble incontournable pour palier les problèmes de panne du write-through. Il pourrait donc être judicieux de combiner les deux si l'utilisation du cache write-through porte un intérêt dans notre cas d'utilisation.
 
 + **Time-to-live**
+  
+Le problème d'expiration du cache est extrêmement important à prendre en compte lors de la conception de celui-ci, mais il peut rapidement devenir compliqué. En effet, en environnement réel, le cache contient généralement énormément d'informations à la fois, et toutes mises à jour de différentes façons.
+
+Il n'éxiste malheureusement pas de solution miracle à ce problème. Néanmoins, on peut citer plusieurs stratégies simples qu'il est possible d'utiliser :
+
+* Appliquer un temps de vie (ou time to live, TTL) à chaque clé du cache, sauf celles mises à jour en Write-Through. Le temps peut être long, que ce soit plusieurs heures ou mêmes jours. Cette technique permet de détecter les bugs de l'application, les oublis de mise à jour ou la suppression d'une clé de cache pendant une mise à jour. Une fois le TTL dépassé, la clé expirera et sera mise à jour.
+* Pour les données changeant fréquemment, privilégier un TTL court, même juste de quelques secondes. Cela représente une solution simple dans les cas ou la base de données est très fréquemment appelée.
+* Un pattern plus récent : "*Russian Doll Caching*", nous vient du travail de l'équipe Ruby on Rails. Dans celui-ci, les enregistrements de "plus bas niveau" possèdent leur propre clé de cache, tandis que les ressources de haut niveau sont des collections de ces clés. Prenons l'exemple d'une page web contenant un utilisateur, des commentaires, etc. Ici, chaque élément possèdera sa propre clé de cache, et la page effectuera des requêtes sur chaque clé de façon distincte.
+* Dans le cas où l'on n'est pas sur de si une clé est affecté par une mise à jour ou pas, on la supprime. Le Lazy Caching la régénérera plus tard au besoin, et en attendant, la base de fera pas pire que sans caching.
+
+
 + **Evictions**
+
+L'expulsion est un phénomène qui se déclenche lorsque la mémoire du cache est surchargée. Celui-ci va ainsi commencer à supprimer des clés de sorte à récupérer de l'espace mémoire. Les clés expulsées dépendent de la politique d'expulsion du cache. On peut distinguer de nombreuses politiques, dont entre autres :
+
+* allkeys-lfu : Le cache expulse la clé la moins fréquemment utilisée, sans regarder le TTL.
+* allkeys-lru : Le cache expulse la clé utilisée le moins récemment, sans regarder le TTL.
+* volatile-lfu : Le cache expulse la clé la moins fréquemment utilise parmi celles qui disposent d'un TTL.
+* volatile-lru : Le cache expulse la clé utilisée le moins récemment parmi celles qui disposent d'un TTL.
+* volatile-ttl : Le cache expulse la clé avec le TTL le plus court.
+* volatile-random : Le cache expulse aléatoirement une clé disposant d'un TLL.
+* allkeys-random : Le cache expulse aléatoirement une clé, sans regarder le TTL.
+* no-eviction : Le cache n'expulse aucune clé. Il est alors inutilisable jusqu'à ce que de la mémoire soit libérée.
+
+Les stratégies LRU sont les plus couramment utilisées, mais il peut être intéressant de se tourner vers d'autres stratégies selon vos besoins. Enfin, lorsqu'un problème d'expulsion est détecté, c'est généralement le signe qu'une mise à l'échelle est nécessaire, que ce soit par l'ajout de noeuds de cache ou pas l'utilisation de noeuds avec plus de mémoire.
 + **The thundering herd**
 
 ### B2. Solutions technologiques concurrentes
