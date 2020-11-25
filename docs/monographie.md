@@ -25,15 +25,8 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
  <ins>Définition des termes suivants : </ins>
  
  + **memory reclamation mechanism** :
- 
-La récupération de mémoire est le mécanisme de création de pages RAM plus libres, en jetant ailleurs les données qui y résident. Lorsque plus de RAM est nécessaire, les données sont supprimées de la RAM (détruites ou copiées dans le fichier swap pour qu'elles puissent être récupérées à nouveau ).
-
-Ce mécanisme est nécessaire pour toutes les structures de données dynamiques sans verrouillage et lisibles simultanément, telles que les linkedlist ou queue.
-Il faut distinguer deux types de suppression  :
- - la suppression logique d'un nœud, N (le retirer d'une structure de données partagée de sorte qu'aucune nouvelle référence à N ne puisse être créée) 
- - la suppression physique de ce nœud (permettant de récupérer la mémoire utilisée pour N en vue d'une réutilisation arbitraire). 
-
- Si un thread T1 supprime logiquement un nœud N d'une structure de données sans verrouillage, il ne peut pas supprimer physiquement N tant qu'aucun autre thread T2 ne contient une référence à N, car la suppression physique de N peut entraîner un plantage ou une exécution incorrecte de T2.
+ La récupération de mémoire est le mécanisme de création de pages RAM plus libres, en jetant ailleurs les données qui y résident. Lorsque plus de RAM est nécessaire, les données sont supprimées de la RAM (détruites ou copiées dans le fichier swap pour qu'elles puissent être récupérées à nouveau ). Ce mécanisme est nécessaire pour toutes les structures de données dynamiques sans verrouillage et lisibles simultanément, telles que les linkedlist ou queue.
+Il faut donc distinguer deux types de suppression, la suppression logique d'un nœud, N (le retirer d'une structure de données partagée de sorte qu'aucune nouvelle référence à N ne puisse être créée), et la suppression physique de ce nœud (permettant de récupérer la mémoire utilisée pour N en vue d'une réutilisation arbitraire). Si un thread T1 supprime logiquement un nœud N d'une structure de données sans verrouillage, il ne peut pas supprimer physiquement N tant qu'aucun autre thread T2 ne contient une référence à N, car la suppression physique de N peut entraîner un plantage ou une exécution incorrecte de T2.
  
  + **garbage collection** :
  C'est un mécanisme de gestion de la mémoire implicite mis en œuvre dans certains langages de programmation interprétés ou semi-interprétés. Il libère le programmeur de la gestion manuelle de la mémoire où il spécifie quels objets doivent être désalloués et retournés au système de mémoire. Les principes de base du garbage collection consistent à trouver dans un programme des objets de données auxquels on ne pourra plus accéder à l'avenir, et à récupérer les ressources utilisées par ces objets.
