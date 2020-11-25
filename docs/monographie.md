@@ -19,6 +19,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 |--------|--------------------|---------------|
 | 0.0 | 05/11/2020 | Réalisation intégrale de la première version |
 | 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce + séparation Glossaire et mot-clés + définitions dans le Glossaire + suppression du mot-clé *hero image* dans les mots-clés pour remplacement par *Stockage* + qualification de la référence Oracle In-Memory Database Cache Concepts dans la Webographie + justification du facteur "Efficacité de Stockage"+ ajout de la formule de l'indicateur dérivé *Efficacité* + Ajout de 4 approches techniques dans B1. Description de deux d'entre elles|
+| 0.2 | 25/11/2020 | Questions d'amorce + ajout de la qualification de la réference Apache Ignite In-Memory Database dans la Webographie + ajout de sections d'intérêt dans bibliographie pour le livre "The cache memory book, cache data and cache tag memories" + justification du facteur "Efficacité d'exécution" + ajout d'une phrase au lieu de formule dans A.6 car c'est le même facteur dérivé *Efficacité*
 
 ## Questions d'amorce
 
@@ -82,7 +83,7 @@ L'objectif ici est de minimiser le temps d'affichage de l'image chez l'utilisate
 ### A2. Webographie
 
 1. [Oracle In-Memory Database Cache Concepts](https://docs.oracle.com/cd/E13085_01/timesten.1121/e13073/concepts.htm#TTCAC117) : Explication des concepts fondamentaux du système de cache, présentation des différents type de caches et présentation précise de l'architecture de la base de données cache d'Oracle. (*consulté le 22/11/2020*)
-2. [Apache Ignite In-Memory Database](https://ignite.apache.org/use-cases/in-memory-database.html) : (*consulté le 22/11/2020*) : Présentation des principes d'une base de données en mémoire avec Apache Ignite, une plateforme open source de mise en cache.
+2. [Apache Ignite In-Memory Database](https://ignite.apache.org/use-cases/in-memory-database.html) : Présentation des principes d'une base de données en mémoire avec Apache Ignite, une plateforme open source de mise en cache. (*consulté le 22/11/2020*) 
 3. [Amazon : What is caching and how it works](https://aws.amazon.com/caching/?nc1=h_ls) : Présentation générale du principe de mise en cache, et mise en avant de ses avantages. Étude des cas d'utilisation de celle-ci. (*consulté le 25/11/2020*)
 
 ### A3. Bibliographie
@@ -96,6 +97,12 @@ L'objectif ici est de minimiser le temps d'affichage de l'image chez l'utilisate
     * Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256
  
 2. **The cache memory book, cache data and cache tag memories** Handy, Jim. Morgan Kaufmann Publishers In, 2nd edition édition 1998.
+
+    <ins>Sections d'intérêt</ins>
+    
+    * What is Cache de Memory ?, page 1 
+    * How are Caches designed ?, page 39
+    * Maintaining Coherency in Cached Systems, page 123
 
 3. **Supercomputing systems: architectures, design, and performance**, *Svetlana P. Kartashev, Steven I. Kartashev, Von Nostrand Reinhold, cop.1990*
    
@@ -153,6 +160,7 @@ Il est important de noter que ce système n'est pas directement lié à la base 
 
 <ins>Indicateurs dérivés</ins>
 - Efficacité
+* Formule : La formule est décrite dans le critère précédent. 
 
 **Facilité de migration**
 
