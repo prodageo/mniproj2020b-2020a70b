@@ -26,10 +26,21 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
  
  + **memory reclamation mechanism** :
  
+La récupération de mémoire est le mécanisme de création de pages RAM plus libres, en jetant ailleurs les données qui y résident. Lorsque plus de RAM est nécessaire, les données sont supprimées de la RAM (détruites ou copiées dans le fichier swap pour qu'elles puissent être récupérées à nouveau ).
+
+Ce mécanisme est nécessaire pour toutes les structures de données dynamiques sans verrouillage et lisibles simultanément, telles que les linkedlist ou queue.
+Il faut distinguer deux types de suppression  :
+ - la suppression logique d'un nœud, N (le retirer d'une structure de données partagée de sorte qu'aucune nouvelle référence à N ne puisse être créée) 
+ - la suppression physique de ce nœud (permettant de récupérer la mémoire utilisée pour N en vue d'une réutilisation arbitraire). 
+
+ Si un thread T1 supprime logiquement un nœud N d'une structure de données sans verrouillage, il ne peut pas supprimer physiquement N tant qu'aucun autre thread T2 ne contient une référence à N, car la suppression physique de N peut entraîner un plantage ou une exécution incorrecte de T2.
+ 
  + **garbage collection** :
+ C'est un mécanisme de gestion de la mémoire implicite mis en œuvre dans certains langages de programmation interprétés ou semi-interprétés. Il libère le programmeur de la gestion manuelle de la mémoire où il spécifie quels objets doivent être désalloués et retournés au système de mémoire. Les principes de base du garbage collection consistent à trouver dans un programme des objets de données auxquels on ne pourra plus accéder à l'avenir, et à récupérer les ressources utilisées par ces objets.
  
  + **JEP (dans le monde Java)** : 
- 
+ Jep Java analyse et évalue des expressions mathématiques avec seulement quelques lignes de code. Ce progiciel permet aux utilisateurs de saisir une formule sous forme de chaîne de caractères et de l'évaluer instantanément. Jep prend en charge les variables, les constantes et les fonctions définies par l'utilisateur. Un certain nombre de fonctions et de constantes mathématiques courantes sont incluses.
+
  + **classe WeakHashMap dans java.util** : Implémentation de l'interface Map de java.util basée sur une table de hachage, avec des clés dites "faibles". Une entrée dans un WeakHashMap sera automatiquement supprimée lorsque sa clé n'est plus utilisée. Plus précisément, la présence d'un mapping pour une clé donnée n'empêchera pas à la clé d'être jetée par le ramasseur d'ordures, c'est-à-dire rendue finalisable, finalisée, puis récupérée. Lorsqu'une clé a été jetée, son entrée est effectivement retirée de la Map, de sorte que cette classe se comporte quelque peu différemment des autres implémentations Map de Java. (définition donnée par la [documentation officielle de Java](https://docs.oracle.com/javase/7/docs/api/java/util/WeakHashMap.html))
  
  + **distributed in-memory data cache** : La "distributed in-memory data cache" ou en français "mise en cache distribuée en mémoire" n'est rien d'autre qu'un cache réparti sur différents nœuds. Il rend les données hautement disponibles pour la ou les applications qui les utilisent. Il s'agit généralement de magasins de clés/valeurs qui prennent en charge les opérations standard put/get ainsi que les capacités de partitionnement, de réplication ou de sauvegarde des données. Par exemple , [Apache](https://ignite.apache.org/use-cases/in-memory-cache.html) propose ce genre de service.
@@ -78,7 +89,7 @@ L'objectif ici est de minimiser le temps d'affichage de l'image chez l'utilisate
 ### A2. Webographie
 
 1. [Oracle In-Memory Database Cache Concepts](https://docs.oracle.com/cd/E13085_01/timesten.1121/e13073/concepts.htm#TTCAC117) : Explication des concepts fondamentaux du système de cache, présentation des différents type de caches et présentation précise de l'architecture de la base de données cache d'Oracle. (*consulté le 22/11/2020*)
-2. [Apache Ignite In-Memory Database](https://ignite.apache.org/use-cases/in-memory-database.html)
+2. [Apache Ignite In-Memory Database](https://ignite.apache.org/use-cases/in-memory-database.html) : (*consulté le 22/11/2020*) : Présentation des principes d'une base de données en mémoire avec Apache Ignite, une plateforme open source de mise en cache.
 3. [Amazon : What is caching and how it works](https://aws.amazon.com/caching/?nc1=h_ls) : Présentation générale du principe de mise en cache, et mise en avant de ses avantages. Étude des cas d'utilisation de celle-ci. (*consulté le 25/11/2020*)
 
 ### A3. Bibliographie
@@ -92,7 +103,6 @@ L'objectif ici est de minimiser le temps d'affichage de l'image chez l'utilisate
     * Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256
  
 2. **The cache memory book, cache data and cache tag memories** Handy, Jim. Morgan Kaufmann Publishers In, 2nd edition édition 1998.
-
 
 3. **Supercomputing systems: architectures, design, and performance**, *Svetlana P. Kartashev, Steven I. Kartashev, Von Nostrand Reinhold, cop.1990*
    
@@ -125,7 +135,7 @@ Il est important de noter que ce système n'est pas directement lié à la base 
 
 1. **Efficacité de stockage** : "Propriété d'un logiciel qui minimise la place mémoire nécessaire à une opération." [ProgYSM](https://yansanmo.progysm.com/document/93_logiqualdef.htm). Cette définition suffit à justifier ce choix car notre problématique porte exactement sur la minimisation de la place mémoire nécessaire à une opération.
 
-2. **Efficacité d'exécution** :
+2. **Efficacité d'exécution** : "Propriété d'un logiciel qui utilise un minimum de temps machine pour l'accomplissement de ses fonctionnalités."[ProgYSM](https://yansanmo.progysm.com/document/93_logiqualdef.htm). Ce critère a été choisi car l'objectif de notre projet est de minimiser la configuration de la machine nécessaire et optimiser le temps de traitement, or ce facteur répond parfaitement à ces attentes.  
 
 3. **Facilité de migration** : Lorsque l'on conçoit un système, il est important de toujours penser à la mise à l'échelle de celui-ci, soit à la migration vers un environnement à plus grande échelle. Le cacheing est une solution efficace pour maintenir un niveau de performance lors du passage d'un système à une échelle plus élevée.
 
