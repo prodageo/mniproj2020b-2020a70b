@@ -160,7 +160,7 @@ Il est important de noter que ce système n'est pas directement lié à la base 
 
 <ins>Indicateurs dérivés</ins>
 - Efficacité
-* Formule : La formule est décrite dans le critère précédent. 
+  * Formule : La formule est décrite dans le critère précédent. 
 
 **Facilité de migration**
 
