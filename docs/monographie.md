@@ -94,6 +94,10 @@ L'objectif ici est de minimiser le temps d'affichage de l'image chez l'utilisate
     <ins>Sections d'intérêt</ins>
     
     * A Multi-core Memory Organization for 3-D DRAM as Main Memory, page 62
+    
+    Cette section présente l'utilisation de structures DRAM 3D et de mémoires non volatiles telles que les mémoires à changement de phase (PCM)  pour améliorer les latences d'accès et réduire la consommation d'énergie dans les systèmes multi-coeur. Elle traite en outre des mémoires à changement de phase, de la gestion des mémoire 
+virtuelles et de l'indexation associative.
+
     * An Application-Aware  Cache  Replacement  Policy  forLast-Level Caches, page 207
     * Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256
  
@@ -206,7 +210,6 @@ Les fuites de mémoire se produisent lorsque les programmeurs se trompent sur le
 Le Garbage Collection Pattern effectue une « collecte de déchets » par marquage et balayage. En effet, il existe une phase dite de « marquage » suivie d’une phase de « récupération ». Lors de la création d’objets, ces derniers vont être marqués comme "objets vivants". La phase de marquage s’exécute suite à un manque de mémoire ou à une demande explicite d'effectuer le ramassage des ordures. Lors du marquage, on vérifie que tous les objets stockés sont vivants. Ainsi, les objets n’ayant pas pu être atteints sont marqués comme morts. La phase de balayage intervient à ce moment là pour récupérer les objets morts et libérer de l’espace mémoire.
 
 *Source* : [Real Time Design Patterns: Memory Patterns](https://www.informit.com/articles/article.aspx?p=30309&seqNum=6), *(consulté le 05/11/2020)*
-
 
 **Garbage Compactor**
 
