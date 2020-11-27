@@ -204,7 +204,7 @@ Les fuites de mémoire se produisent lorsque les programmeurs se trompent sur le
 
 Le Garbage Collection Pattern effectue une « collecte de déchets » par marquage et balayage. En effet, il existe une phase dite de « marquage » suivie d’une phase de « récupération ». Lors de la création d’objets, ces derniers vont être marqués comme "objets vivants". La phase de marquage s’exécute suite à un manque de mémoire ou à une demande explicite d'effectuer le ramassage des ordures. Lors du marquage, on vérifie que tous les objets stockés sont vivants. Ainsi, les objets n’ayant pas pu être atteints sont marqués comme morts. La phase de balayage intervient à ce moment là pour récupérer les objets morts et libérer de l’espace mémoire.
 
-*Source* : [Real Time Design Patterns: Memory Patterns](https://www.informit.com/articles/article.aspx?p=30309&seqNum=6), *consulté le 05/11/2020*
+*Source* : [Real Time Design Patterns: Memory Patterns](https://www.informit.com/articles/article.aspx?p=30309&seqNum=6), *(consulté le 05/11/2020)*
 
 
 **Garbage Compactor**
