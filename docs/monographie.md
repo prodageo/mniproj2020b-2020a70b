@@ -99,6 +99,9 @@ L'objectif ici est de minimiser le temps d'affichage de l'image chez l'utilisate
 virtuelles et de l'indexation associative.
 
     * An Application-Aware  Cache  Replacement  Policy  forLast-Level Caches, page 207
+    
+    Cette section traite de la politique ACR (Application-aware Cache Replacement) qui assure un suivi dynamique de la durée de vie maximale des lignes de cache partagées pour chaque application concurrente et contribue à une utilisation efficace de l'espace de cache. 
+    
     * Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256
  
 2. **The cache memory book, cache data and cache tag memories** Handy, Jim. Morgan Kaufmann Publishers In, 2nd edition édition 1998.
