@@ -388,9 +388,17 @@ Avantages :
    * Bitmaps
    * HyperLogLogs (structure de données basée sur la probabilité permettant d’estimer les éléments uniques d’un ensemble de données)
 7. Simplicité et facilité d'utilisation
+   * Simplification du code (moins de ligne de codes)
+   * Structure de données natives et beaucoup d'options pour les manipuler et les faire interagir
+   * Plus d'une centaine de clients open source disponibles
+   * Langages pris en charge : Java, Python, PHP, C, C++, C#, JavaScript, Node.js, Ruby, R, Go, etc.
 8. Réplication et persistance
+   * Architecture principal-réplica
+   * Prise en charge de la réplication asynchrone (réplication des données sur plusieurs serveurs réplicas)
+   * Meilleures performances de lecture + meilleure récupération lorsque le serveur principal subit une panne
 9. Disponibilité et persistance élevées
 10. Extensibilité
+  * Aucun verrou propriétaire ou technologique
 
 
 
