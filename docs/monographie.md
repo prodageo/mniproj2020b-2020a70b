@@ -375,11 +375,11 @@ Site officiel de Redis : https://redis.io/
 
 Avantages :
 
-1. Temps de réponse inférieurs à la milliseconde
-3. Rapide d'exécution
-5. Stockage de données en mémoire 
+1. Stockage de données en mémoire 
    * Contrairement aux BDs sur disque, où la plupart des opérations nécessitent un aller-retour au disque, les stockages de données dn mémoire ne subissent pas ce désavantage => Ceci augmente le nombre d'opérations pouvant être pris en charge et diminue le temps de réponse 
-6. Structure de données flexilbles
+2. Rapidité d'exécution
+   * Notamment grâce à ce qui a été expliqué précédemment
+3. Structure de données flexilbles
    * Chaînes de caractères
    * Listes
    * Ensembles
@@ -387,18 +387,18 @@ Avantages :
    * Hachages
    * Bitmaps
    * HyperLogLogs (structure de données basée sur la probabilité permettant d’estimer les éléments uniques d’un ensemble de données)
-7. Simplicité et facilité d'utilisation
+4. Simplicité et facilité d'utilisation
    * Simplification du code (moins de ligne de codes)
    * Structure de données natives et beaucoup d'options pour les manipuler et les faire interagir
    * Plus d'une centaine de clients open source disponibles
    * Langages pris en charge : Java, Python, PHP, C, C++, C#, JavaScript, Node.js, Ruby, R, Go, etc.
-8. Réplication et persistance
+5. Réplication et persistance
    * Architecture principal-réplica
    * Prise en charge de la réplication asynchrone (réplication des données sur plusieurs serveurs réplicas)
    * Meilleures performances de lecture + meilleure récupération lorsque le serveur principal subit une panne
-9. Disponibilité et persistance élevées
-10. Extensibilité
-  * Aucun verrou propriétaire ou technologique
+6. Disponibilité et persistance élevées
+7. Extensibilité
+   * Aucun verrou propriétaire ou technologique
 
 
 
