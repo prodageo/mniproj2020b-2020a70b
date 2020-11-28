@@ -360,7 +360,7 @@ Hormis les TTL, cet effet est également fréquent lors de l'ajout d'un nouveau 
   Enfin, il y a un dernier effet secondaire subtil de l'utilisation des TTL partout. Si la même durée de TTL (disons 60 minutes) est utilisée de manière constante, de nombreuses clés du cache peuvent expirer dans le même laps de temps, même après avoir préchauffé le cache. Une stratégie facile à mettre en œuvre consiste à ajouter une certaine dose de hasard au TTL :
 
  <pre><code># Python
- ttl = 3600 + (rand() * 120)  /* +/- 2 minutes */ 
+ ttl = 3600 + (rand() * 120)
  </code></pre>
  
  La bonne nouvelle est que seuls les sites à grande échelle doivent généralement s'inquiéter de ce niveau de problème d'échelle, mais il est bon d'en être conscient.
