@@ -373,13 +373,23 @@ Site officiel de Redis : https://redis.io/
 
 "Redis, qui signifie Remote Dictionary Server (Serveur de dictionnaire à distance), est un système de stockage de données clé-valeur en mémoire, open source et rapide, pour une utilisation en tant que base de données, de cache, de courtier de messages (message broker) et de file d'attente." (d'après [Amazon](https://aws.amazon.com/fr/redis/), inspiré par la définition de la documentation de Redis)
 
-Avantages :
+Redis dispose de nombreux cas d'usage et parmi ceux les plus répandus, il y a la **mise en cache**.
 
-1. Stockage de données en mémoire 
+Elle est hautement disponible et est utilisée pour :
+
++ réduire la latence d'accès aux données
++ augmenter le débit
++ alléger la charge de la base de données et de l'application relationelle ou NoSQL
++ mettre en cache des requêtes de base de données, de sessions persistantes, de pages Web et d'objets souvent utilisés comme des **images**, des fichiers et des métadonnées pour citer les exemples les plus communs
+
+<ins>Avantages :</ins>
+
+1. **Stockage de données en mémoire** 
    * Contrairement aux BDs sur disque, où la plupart des opérations nécessitent un aller-retour au disque, les stockages de données dn mémoire ne subissent pas ce désavantage => Ceci augmente le nombre d'opérations pouvant être pris en charge et diminue le temps de réponse 
-2. Rapidité d'exécution
+2. **Rapidité d'exécution**
    * Notamment grâce à ce qui a été expliqué précédemment
-3. Structure de données flexilbles
+   * Accès aux données en quelques microsecondes
+3. **Structure de données flexilbles**
    * Chaînes de caractères
    * Listes
    * Ensembles
@@ -387,17 +397,17 @@ Avantages :
    * Hachages
    * Bitmaps
    * HyperLogLogs (structure de données basée sur la probabilité permettant d’estimer les éléments uniques d’un ensemble de données)
-4. Simplicité et facilité d'utilisation
+4. **Simplicité et facilité d'utilisation**
    * Simplification du code (moins de ligne de codes)
    * Structure de données natives et beaucoup d'options pour les manipuler et les faire interagir
    * Plus d'une centaine de clients open source disponibles
    * Langages pris en charge : Java, Python, PHP, C, C++, C#, JavaScript, Node.js, Ruby, R, Go, etc.
-5. Réplication et persistance
+5. **Réplication et persistance**
    * Architecture principal-réplica
    * Prise en charge de la réplication asynchrone (réplication des données sur plusieurs serveurs réplicas)
    * Meilleures performances de lecture + meilleure récupération lorsque le serveur principal subit une panne
-6. Disponibilité et persistance élevées
-7. Extensibilité
+6. **Disponibilité et persistance élevées**
+7. **Extensibilité**
    * Aucun verrou propriétaire ou technologique
 
 
