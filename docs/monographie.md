@@ -365,8 +365,9 @@ Hormis les TTL, cet effet est également fréquent lors de l'ajout d'un nouveau 
  
  La bonne nouvelle est que seuls les sites à grande échelle doivent généralement s'inquiéter de ce niveau de problème d'échelle, mais il est bon d'en être conscient.
  
- 
 ### B2. Solutions technologiques concurrentes
+
+#### Redis
 
 ### B3. Solutions retenues
 
