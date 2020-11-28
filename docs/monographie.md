@@ -378,9 +378,15 @@ Avantages :
 1. Temps de réponse inférieurs à la milliseconde
 3. Rapide d'exécution
 5. Stockage de données en mémoire 
- + Contrairement aux BDs sur disque, où la plupart des opérations nécessitent un aller-retour au disque, les stockages de données dn mémoire ne subissent pas ce désavantage => Ceci augmente le nombre d'opérations pouvant être pris en charge et diminue le temps de réponse 
+   * Contrairement aux BDs sur disque, où la plupart des opérations nécessitent un aller-retour au disque, les stockages de données dn mémoire ne subissent pas ce désavantage => Ceci augmente le nombre d'opérations pouvant être pris en charge et diminue le temps de réponse 
 6. Structure de données flexilbles
- + Chaînes de caractères, Listes, Ensembles, Ensembles ordonnées, Hachages, Bitmaps, HyperLogLogs (structure de données basée sur la probabilité permettant d’estimer les éléments uniques d’un ensemble de données)
+   * Chaînes de caractères
+   * Listes
+   * Ensembles
+   * Ensembles ordonnées
+   * Hachages
+   * Bitmaps
+   * HyperLogLogs (structure de données basée sur la probabilité permettant d’estimer les éléments uniques d’un ensemble de données)
 7. Simplicité et facilité d'utilisation
 8. Réplication et persistance
 9. Disponibilité et persistance élevées
