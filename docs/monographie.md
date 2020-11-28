@@ -369,6 +369,25 @@ Hormis les TTL, cet effet est également fréquent lors de l'ajout d'un nouveau 
 
 #### Redis
 
+Site officiel de Redis : https://redis.io/
+
+"Redis, qui signifie Remote Dictionary Server (Serveur de dictionnaire à distance), est un système de stockage de données clé-valeur en mémoire, open source et rapide, pour une utilisation en tant que base de données, de cache, de courtier de messages (message broker) et de file d'attente." (d'après [Amazon](https://aws.amazon.com/fr/redis/), inspiré par la définition de la documentation de Redis)
+
+Avantages :
+
+1. Temps de réponse inférieurs à la milliseconde
+3. Rapide d'exécution
+5. Stockage de données en mémoire 
+ + Contrairement aux BDs sur disque, où la plupart des opérations nécessitent un aller-retour au disque, les stockages de données dn mémoire ne subissent pas ce désavantage => Ceci augmente le nombre d'opérations pouvant être pris en charge et diminue le temps de réponse 
+6. Structure de données flexilbles
+ + Chaînes de caractères, Listes, Ensembles, Ensembles ordonnées, Hachages, Bitmaps, HyperLogLogs (structure de données basée sur la probabilité permettant d’estimer les éléments uniques d’un ensemble de données)
+7. Simplicité et facilité d'utilisation
+8. Réplication et persistance
+9. Disponibilité et persistance élevées
+10. Extensibilité
+
+
+
 ### B3. Solutions retenues
 
 ### B4. Liste de métriques
