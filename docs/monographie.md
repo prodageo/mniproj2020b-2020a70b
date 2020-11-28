@@ -21,6 +21,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce + séparation Glossaire et mot-clés + définitions dans le Glossaire + suppression du mot-clé *hero image* dans les mots-clés pour remplacement par *Stockage* + qualification de la référence Oracle In-Memory Database Cache Concepts dans la Webographie + justification du facteur "Efficacité de Stockage"+ ajout de la formule de l'indicateur dérivé *Efficacité* + Ajout de 4 approches techniques dans B1. Description de deux d'entre elles|
 | 0.2 | 25/11/2020 | Questions d'amorce + ajout de la qualification de la réference Apache Ignite In-Memory Database dans la Webographie + ajout de sections d'intérêt dans bibliographie pour le livre "The cache memory book, cache data and cache tag memories" + justification du facteur "Efficacité d'exécution" + ajout d'une phrase au lieu de formule dans A.6 car c'est le même facteur dérivé *Efficacité*|
 | 0.3 | 27/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***Architecture of Computing Systems - ARCS 2013*** + suppression de la section *Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256* car finalement un peu trop éloigné du sujet + référence du pattern Garbage Collector  |
+| 0.4 | 28/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***The cache memory book, cache data and cache tag memories*** +  ajout de ma source pour Garbage Compactor dans Références théoriques + explication de l'effet 'The thundering herd' dans Approche technique|
 
 ## Questions d'amorce
 
@@ -107,9 +108,13 @@ virtuelles et de l'indexation associative.
 
     <ins>Sections d'intérêt</ins>
     
-    * What is Cache de Memory ?, page 1 
-    * How are Caches designed ?, page 39
-    * Maintaining Coherency in Cached Systems, page 123
+    * What is a Cache Memory ?
+    
+   Cette section explique le concept de mémoire cache et ses quatre parties fondamentales (l'unité de mémoire, le répertoire, le contrôleur et les buffers qui l'isolent d'un bus partagé). Elle explique également comment la mémoire cache sert à accroître l'efficacité des opérations liées au CPU (Central processing unit), et présente les données de cache et les mémoires de cache-tag.
+   
+    * How are Caches designed ?
+    
+    Cette section étudie certaines des méthodes ou "astuces du métier" utilisées dans la conception des caches. Bien qu'aucune technique de conception particulièrement complexe ne soit utilisée, une grande partie de la réflexion est consacrée à examiner de nombreuses règles empiriques spécifiques aux caches afin d'effectuer correctement la conception des caches.
 
 3. **Supercomputing systems: architectures, design, and performance**, *Svetlana P. Kartashev, Steven I. Kartashev, Von Nostrand Reinhold, cop.1990*
    
@@ -220,6 +225,8 @@ Lors de la fragmentation, la mémoire libre est divisée en blocs non contigus. 
 Le Garbage Collection Pattern est une variante du "Garbage Collection Pattern". Tout comme lui, il traite la libération de la mémoire, mais en gérant à la fois la défragmentation et récupération automatique de la mémoire libérée pour qu'elle commence alors comme un bloc contigu.
 
 Il atteint cet objectif en maintenant deux segments de mémoire dans le tas. Lors de la collecte des déchets, les objets vivants sont déplacés d'un segment à l'autre, de sorte que dans le segment cible, les objets soient juxtaposés l'un à côté de l'autre. La mémoire libre est ainsi sous la forme d'un seul grand bloc contigu.
+
+*Source* : [Real Time Design Patterns: Memory Patterns (Garbage Compactor Pattern)](https://www.informit.com/articles/article.aspx?p=30309&seqNum=7), *(consulté le 04/11/2020)*
 
 ## Partie B
 
@@ -338,8 +345,27 @@ L'expulsion est un phénomène qui se déclenche lorsque la mémoire du cache es
 * no-eviction : Le cache n'expulse aucune clé. Il est alors inutilisable jusqu'à ce que de la mémoire soit libérée.
 
 Les stratégies LRU sont les plus couramment utilisées, mais il peut être intéressant de se tourner vers d'autres stratégies selon vos besoins. Enfin, lorsqu'un problème d'expulsion est détecté, c'est généralement le signe qu'une mise à l'échelle est nécessaire, que ce soit par l'ajout de noeuds de cache ou pas l'utilisation de noeuds avec plus de mémoire.
+
 + **The thundering herd**
 
+L'effet "thundering herd", également appelé "dog piling", se produit lorsque plusieurs processus d'application différents demandent simultanément une clé de cache, obtiennent une erreur de cache (cache miss, c'est à dire l'application demande des données qui ne sont pas actuellement dans la mémoire cache), et que chacun d'entre eux effectue en parallèle la même requête dans la base de données. Plus cette requête est complexe et coûteuse, plus important sera son impact sur la base de données. L'ajout de TTL à toutes les clés de cache peut aggraver ce problème. Par exemple, disons que des millions de personnes suivent un utilisateur populaire sur votre site. Cet utilisateur n'a pas mis à jour son profil ni publié de nouveaux messages, et pourtant le cache de son profil expire toujours en raison d'une TTL. La base de données pourrait soudainement être submergée par une série de requêtes identiques.
+
+Hormis les TTL, cet effet est également fréquent lors de l'ajout d'un nouveau nœud de cache, car la mémoire de ce dernier est vide. Dans les deux cas, la solution consiste à préchauffer le cache en suivant les étapes suivantes :
+
+  1. Rédiger un script qui exécute les mêmes requêtes que l'application.
+  2. Si l'application est configurée pour une mise en cache paresseuse (lazy caching), les erreurs de cache entraîneront le remplissage des clés de cache et le nouveau nœud de cache se remplira.
+  3. Lorsque de nouveaux nœuds de cache sont ajoutés, exécuter le script avant d'attacher le nouveau nœud à l'application. 
+  4. Si vous prévoyez d'ajouter et de supprimer régulièrement des nœuds de cache, le préchauffage peut être automatisé en déclenchant l'exécution du script à chaque fois que votre application reçoit un événement de reconfiguration de cluster par le biais d'Amazon Simple Notification Service (Amazon SNS).
+  
+  Enfin, il y a un dernier effet secondaire subtil de l'utilisation des TTL partout. Si la même durée de TTL (disons 60 minutes) est utilisée de manière constante, de nombreuses clés du cache peuvent expirer dans le même laps de temps, même après avoir préchauffé le cache. Une stratégie facile à mettre en œuvre consiste à ajouter une certaine dose de hasard au TTL :
+
+ <pre><code># Python
+ ttl = 3600 + (rand() * 120)  /* +/- 2 minutes */ 
+ </code></pre>
+ 
+ La bonne nouvelle est que seuls les sites à grande échelle doivent généralement s'inquiéter de ce niveau de problème d'échelle, mais il est bon d'en être conscient.
+ 
+ 
 ### B2. Solutions technologiques concurrentes
 
 ### B3. Solutions retenues
