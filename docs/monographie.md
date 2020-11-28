@@ -371,7 +371,7 @@ Nous avons opté pour le lazy caching qui est à priori la base des bonnes prati
 
 Voici trois solutions technologiques concurrentes mettant en oeuvre le lazy caching ou cache-aside :
 
-#### Redis
+<p align="center"><img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/6b/Redis_Logo.svg/langfr-1024px-Redis_Logo.svg.png" width="100"/></p>
 
 Site officiel de Redis : https://redis.io/
 
