@@ -367,6 +367,10 @@ Hormis les TTL, cet effet est également fréquent lors de l'ajout d'un nouveau 
  
 ### B2. Solutions technologiques concurrentes
 
+Nous avons opté pour le lazy caching qui est à priori la base des bonnes pratiques de cache.
+
+Voici trois solutions technologiques concurrentes mettant en oeuvre le lazy caching ou cache-aside :
+
 #### Redis
 
 Site officiel de Redis : https://redis.io/
@@ -374,6 +378,8 @@ Site officiel de Redis : https://redis.io/
 "Redis, qui signifie Remote Dictionary Server (Serveur de dictionnaire à distance), est un système de stockage de données clé-valeur en mémoire, open source et rapide, pour une utilisation en tant que base de données, de cache, de courtier de messages (message broker) et de file d'attente." (d'après [Amazon](https://aws.amazon.com/fr/redis/), inspiré par la définition de la documentation de Redis)
 
 Redis dispose de nombreux cas d'usage et parmi ceux les plus répandus, il y a la **mise en cache**.
+
+"Redis est écrit en ANSI C et fonctionne dans la plupart des systèmes POSIX comme Linux, BSD, OS X sans dépendances externes. Linux et OS X sont les deux systèmes d'exploitation où Redis est le plus développé et testé, et nous recommandons d'utiliser Linux pour le déploiement. Redis peut fonctionner dans des systèmes dérivés de Solaris comme SmartOS, mais le support est assuré au mieux. Il n'y a pas de support officiel pour les builds de Windows." (d'après la [documentation officielle de Redis](https://redis.io/topics/introduction), consultée le 28 novembre 2020)
 
 Elle est hautement disponible et est utilisée pour :
 
@@ -409,8 +415,20 @@ Elle est hautement disponible et est utilisée pour :
 6. **Disponibilité et persistance élevées**
 7. **Extensibilité**
    * Aucun verrou propriétaire ou technologique
+   
+<ins>Inconvénients</ins>
 
+1. Redis n'est pas capable de stocker des objets complexes et de comprendre le graphique de l'objet 
+   * Le développeur doit modéliser le graphe en une série d'entrées de clé/valeur où une partie de la clé représente une propriété et sa valeur
+2. Il est impossible de diviser les données en utilisant des concepts tels que les tables
+   * Tout est tocké dans un espace de noms, par exemple la base de données
+   * Cela oblige l'élaboration de schémas complexes d'espaces de noms à l'intérieur des clés
+3. Redis ne supporte pas nativement les index 
+   * Nécessité de créer ses propres structures d'index et de les mettre soit-même à jour et de s'y référer. Ceci est décrit dans la [documentation de Redis](https://redis.io/topics/indexes)
 
+Les informations ci-dessus sont extraites de [la page consagrée à Redis sur Amazon](https://aws.amazon.com/fr/redis/), consulté le 28 novembre 2020.
+
+Les inconvénients sont extraits de [Compare Redis and Hazelcast](https://hazelcast.org/compare-with-redis/), consulté le 28 novembre de 2020
 
 ### B3. Solutions retenues
 
