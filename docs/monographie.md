@@ -388,6 +388,10 @@ Elle est hautement disponible et est utilisée pour :
 + alléger la charge de la base de données et de l'application relationelle ou NoSQL
 + mettre en cache des requêtes de base de données, de sessions persistantes, de pages Web et d'objets souvent utilisés comme des **images**, des fichiers et des métadonnées pour citer les exemples les plus communs
 
+En outre, Redis offre plusieurs services de cache (**cache-aside (Lazy-loading)**, Write-Behind, Write-Back, Write-Through et Read-replica)
+
+**Cache-aside** est la façon la plus courante d'utiliser Redis comme cache.  Les applications lourdes en lecture peuvent grandement bénéficier de la mise en œuvre d'une approche de cache-aside. 
+
 <ins>Avantages :</ins>
 
 1. **Stockage de données en mémoire** 
