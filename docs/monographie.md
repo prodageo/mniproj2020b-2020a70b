@@ -570,8 +570,7 @@ Pour ce facteur, nous proposons de mesurer le nombre de fois où le système ret
     Pour ce premier indicateur de base, nous mesurerons le temps d'affichage d'une image
 
 2. Fiabilité :
-    Pour ce second indicateur de base, nous mesurerons deux chose :
-        + Le nombre de réponses correctes/le nombre de requêtes total. Autrement dit le nombre d'images renvoyées qui correspondent à la requête sur le nombre total d'images demandées
+    Pour ce second indicateur de base, nous mesurerons le nombre de réponses correctes/le nombre de requêtes total. Autrement dit le nombre d'images renvoyées qui correspondent à la requête sur le nombre total d'images demandées
         
 **Efficacité d'exécution** : 
 Pour ce facteur, nous proposons de mesurer le nombre d'opérations exécutées par seconde (autrement dit le nombre d'images affichées par sec).
