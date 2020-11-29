@@ -21,6 +21,8 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.1 | 22/11/2020 | Tableau de suivi des versions + questions d'amorce + séparation Glossaire et mot-clés + définitions dans le Glossaire + suppression du mot-clé *hero image* dans les mots-clés pour remplacement par *Stockage* + qualification de la référence Oracle In-Memory Database Cache Concepts dans la Webographie + justification du facteur "Efficacité de Stockage"+ ajout de la formule de l'indicateur dérivé *Efficacité* + Ajout de 4 approches techniques dans B1. Description de deux d'entre elles|
 | 0.2 | 25/11/2020 | Questions d'amorce + ajout de la qualification de la réference Apache Ignite In-Memory Database dans la Webographie + ajout de sections d'intérêt dans bibliographie pour le livre "The cache memory book, cache data and cache tag memories" + justification du facteur "Efficacité d'exécution" + ajout d'une phrase au lieu de formule dans A.6 car c'est le même facteur dérivé *Efficacité*|
 | 0.3 | 27/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***Architecture of Computing Systems - ARCS 2013*** + suppression de la section *Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256* car finalement un peu trop éloigné du sujet + référence du pattern Garbage Collector  |
+| 0.4 | 28/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***The cache memory book, cache data and cache tag memories*** +  ajout de ma source pour Garbage Compactor dans Références théoriques + explication de l'effet 'The thundering herd' dans Approche technique|
+| 0.5 | 29/11/2020 | Ajout de la justication de la solution technologique **Hazelcast** dans B2.|
 
 ## Questions d'amorce
 
@@ -107,9 +109,13 @@ virtuelles et de l'indexation associative.
 
     <ins>Sections d'intérêt</ins>
     
-    * What is Cache de Memory ?, page 1 
-    * How are Caches designed ?, page 39
-    * Maintaining Coherency in Cached Systems, page 123
+    * What is a Cache Memory ?
+    
+   Cette section explique le concept de mémoire cache et ses quatre parties fondamentales (l'unité de mémoire, le répertoire, le contrôleur et les buffers qui l'isolent d'un bus partagé). Elle explique également comment la mémoire cache sert à accroître l'efficacité des opérations liées au CPU (Central processing unit), et présente les données de cache et les mémoires de cache-tag.
+   
+    * How are Caches designed ?
+    
+    Cette section étudie certaines des méthodes ou "astuces du métier" utilisées dans la conception des caches. Bien qu'aucune technique de conception particulièrement complexe ne soit utilisée, une grande partie de la réflexion est consacrée à examiner de nombreuses règles empiriques spécifiques aux caches afin d'effectuer correctement la conception des caches.
 
 3. **Supercomputing systems: architectures, design, and performance**, *Svetlana P. Kartashev, Steven I. Kartashev, Von Nostrand Reinhold, cop.1990*
    
@@ -226,6 +232,8 @@ Lors de la fragmentation, la mémoire libre est divisée en blocs non contigus. 
 Le Garbage Collection Pattern est une variante du "Garbage Collection Pattern". Tout comme lui, il traite la libération de la mémoire, mais en gérant à la fois la défragmentation et récupération automatique de la mémoire libérée pour qu'elle commence alors comme un bloc contigu.
 
 Il atteint cet objectif en maintenant deux segments de mémoire dans le tas. Lors de la collecte des déchets, les objets vivants sont déplacés d'un segment à l'autre, de sorte que dans le segment cible, les objets soient juxtaposés l'un à côté de l'autre. La mémoire libre est ainsi sous la forme d'un seul grand bloc contigu.
+
+*Source* : [Real Time Design Patterns: Memory Patterns (Garbage Compactor Pattern)](https://www.informit.com/articles/article.aspx?p=30309&seqNum=7), *(consulté le 04/11/2020)*
 
 ## Partie B
 
@@ -344,11 +352,156 @@ L'expulsion est un phénomène qui se déclenche lorsque la mémoire du cache es
 * no-eviction : Le cache n'expulse aucune clé. Il est alors inutilisable jusqu'à ce que de la mémoire soit libérée.
 
 Les stratégies LRU sont les plus couramment utilisées, mais il peut être intéressant de se tourner vers d'autres stratégies selon vos besoins. Enfin, lorsqu'un problème d'expulsion est détecté, c'est généralement le signe qu'une mise à l'échelle est nécessaire, que ce soit par l'ajout de noeuds de cache ou pas l'utilisation de noeuds avec plus de mémoire.
+
 + **The thundering herd**
 
+L'effet "thundering herd", également appelé "dog piling", se produit lorsque plusieurs processus d'application différents demandent simultanément une clé de cache, obtiennent une erreur de cache (cache miss, c'est à dire l'application demande des données qui ne sont pas actuellement dans la mémoire cache), et que chacun d'entre eux effectue en parallèle la même requête dans la base de données. Plus cette requête est complexe et coûteuse, plus important sera son impact sur la base de données. L'ajout de TTL à toutes les clés de cache peut aggraver ce problème. Par exemple, disons que des millions de personnes suivent un utilisateur populaire sur votre site. Cet utilisateur n'a pas mis à jour son profil ni publié de nouveaux messages, et pourtant le cache de son profil expire toujours en raison d'une TTL. La base de données pourrait soudainement être submergée par une série de requêtes identiques.
+
+Hormis les TTL, cet effet est également fréquent lors de l'ajout d'un nouveau nœud de cache, car la mémoire de ce dernier est vide. Dans les deux cas, la solution consiste à préchauffer le cache en suivant les étapes suivantes :
+
+  1. Rédiger un script qui exécute les mêmes requêtes que l'application.
+  2. Si l'application est configurée pour une mise en cache paresseuse (lazy caching), les erreurs de cache entraîneront le remplissage des clés de cache et le nouveau nœud de cache se remplira.
+  3. Lorsque de nouveaux nœuds de cache sont ajoutés, exécuter le script avant d'attacher le nouveau nœud à l'application. 
+  4. Si vous prévoyez d'ajouter et de supprimer régulièrement des nœuds de cache, le préchauffage peut être automatisé en déclenchant l'exécution du script à chaque fois que votre application reçoit un événement de reconfiguration de cluster par le biais d'Amazon Simple Notification Service (Amazon SNS).
+  
+  Enfin, il y a un dernier effet secondaire subtil de l'utilisation des TTL partout. Si la même durée de TTL (disons 60 minutes) est utilisée de manière constante, de nombreuses clés du cache peuvent expirer dans le même laps de temps, même après avoir préchauffé le cache. Une stratégie facile à mettre en œuvre consiste à ajouter une certaine dose de hasard au TTL :
+
+ <pre><code># Python
+ ttl = 3600 + (rand() * 120)
+ </code></pre>
+ 
+ La bonne nouvelle est que seuls les sites à grande échelle doivent généralement s'inquiéter de ce niveau de problème d'échelle, mais il est bon d'en être conscient.
+ 
 ### B2. Solutions technologiques concurrentes
 
-### B3. Solutions retenues
+Nous avons opté pour le lazy caching qui est à priori la base des bonnes pratiques de cache.
+
+Voici trois solutions technologiques concurrentes mettant en oeuvre le lazy caching ou cache-aside :
+
+<img src="https://upload.wikimedia.org/wikipedia/fr/thumb/6/6b/Redis_Logo.svg/langfr-1024px-Redis_Logo.svg.png" width="200"/></p>
+
+Site officiel de Redis : https://redis.io/
+
+"Redis, qui signifie Remote Dictionary Server (Serveur de dictionnaire à distance), est un système de stockage de données clé-valeur en mémoire, open source et rapide, pour une utilisation en tant que base de données, de cache, de courtier de messages (message broker) et de file d'attente." (d'après [Amazon](https://aws.amazon.com/fr/redis/), inspiré par la définition de la documentation de Redis)
+
+Redis dispose de nombreux cas d'usage et parmi ceux les plus répandus, il y a la **mise en cache**.
+
+"Redis est écrit en ANSI C et fonctionne dans la plupart des systèmes POSIX comme Linux, BSD, OS X sans dépendances externes. Linux et OS X sont les deux systèmes d'exploitation où Redis est le plus développé et testé, et nous recommandons d'utiliser Linux pour le déploiement. Redis peut fonctionner dans des systèmes dérivés de Solaris comme SmartOS, mais le support est assuré au mieux. Il n'y a pas de support officiel pour les builds de Windows." (d'après la [documentation officielle de Redis](https://redis.io/topics/introduction), consultée le 28 novembre 2020)
+
+Elle est hautement disponible et est utilisée pour :
+
++ réduire la latence d'accès aux données
++ augmenter le débit
++ alléger la charge de la base de données et de l'application relationelle ou NoSQL
++ mettre en cache des requêtes de base de données, de sessions persistantes, de pages Web et d'objets souvent utilisés comme des **images**, des fichiers et des métadonnées pour citer les exemples les plus communs
+
+En outre, Redis offre plusieurs services de cache (**cache-aside (Lazy-loading)**, Write-Behind, Write-Back, Write-Through et Read-replica)
+
+**Cache-aside** est la façon la plus courante d'utiliser Redis comme cache.  Les applications lourdes en lecture peuvent grandement bénéficier de la mise en œuvre d'une approche de cache-aside. 
+
+<ins>Avantages :</ins>
+
+1. **Stockage de données en mémoire** 
+   * Contrairement aux BDs sur disque, où la plupart des opérations nécessitent un aller-retour au disque, les stockages de données en mémoire ne subissent pas ce désavantage => Ceci augmente le nombre d'opérations pouvant être pris en charge et diminue le temps de réponse 
+2. **Rapidité d'exécution**
+   * Notamment grâce à ce qui a été expliqué précédemment
+   * Accès aux données en quelques microsecondes
+3. **Structure de données flexilbles**
+   * Chaînes de caractères
+   * Listes
+   * Ensembles
+   * Ensembles ordonnées
+   * Hachages
+   * Bitmaps
+   * HyperLogLogs (structure de données basée sur la probabilité permettant d’estimer les éléments uniques d’un ensemble de données)
+4. **Simplicité et facilité d'utilisation**
+   * Simplification du code (moins de ligne de codes)
+   * Structure de données natives et beaucoup d'options pour les manipuler et les faire interagir
+   * Plus d'une centaine de clients open source disponibles
+   * Langages pris en charge : Java, Python, PHP, C, C++, C#, JavaScript, Node.js, Ruby, R, Go, etc.
+5. **Réplication et persistance**
+   * Architecture principal-réplica
+   * Prise en charge de la réplication asynchrone (réplication des données sur plusieurs serveurs réplicas)
+   * Meilleures performances de lecture + meilleure récupération lorsque le serveur principal subit une panne
+6. **Disponibilité et persistance élevées**
+7. **Extensibilité**
+   * Aucun verrou propriétaire ou technologique
+   
+<ins>Inconvénients</ins>
+
+1. Redis n'est pas capable de stocker des objets complexes et de comprendre le graphique de l'objet 
+   * Le développeur doit modéliser le graphe en une série d'entrées de clé/valeur où une partie de la clé représente une propriété et sa valeur
+2. Il est impossible de diviser les données en utilisant des concepts tels que les tables
+   * Tout est tocké dans un espace de noms, par exemple la base de données
+   * Cela oblige l'élaboration de schémas complexes d'espaces de noms à l'intérieur des clés
+3. Redis ne supporte pas nativement les index 
+   * Nécessité de créer ses propres structures d'index et de les mettre soit-même à jour et de s'y référer. Ceci est décrit dans la [documentation de Redis](https://redis.io/topics/indexes)
+
+Les informations ci-dessus sont extraites de [la page consacrée à Redis sur Amazon](https://aws.amazon.com/fr/redis/), consulté le 28 novembre 2020.
+
+Les inconvénients sont extraits de [Compare Redis and Hazelcast](https://hazelcast.org/compare-with-redis/), consulté le 28 novembre de 2020
+
+<img src="https://hazelcast.com/images/logos/hazelcast-logo-horz.svg" width="300"/></p>
+
+Site officiel de Hazelcast : https://hazelcast.com
+
+Hazelcast IMDG est une solution open source in-memory Java permettant d’accélérer les bases de données et les applications à l’aide de clusters dédiés. La plateforme de type *data grid* est conçue pour servir de cache de données pour les charges de travail à haut volume d'informations et à faible latence transactionnelle. Dans une grille Hazelcast, les données sont réparties uniformément entre les nœuds d'un groupe d'ordinateurs, ce qui permet une mise à l'échelle horizontale du traitement et du stockage disponible. Des sauvegardes sont également réparties entre les nœuds afin de se prémunir contre toute défaillance d'un seul nœud. Hazelcast utilise la base de données relationnelle en plus de la mémoire primaire pour le stockage des données.
+
+Hazelcast peut fonctionner sur site, dans le nuage (Amazon Web Services, Microsoft Azure, Cloud Foundry, OpenShift), virtuellement (VMware) et dans des conteneurs Docker. Parmi les cas d'utilisation typiques pour Hazelcast l'on trouve :
+
++ Base de données clé-valeur
++ Stockage de données NoSQL
++ Cache-as-a-service
++ Distributed cache
++ In-memory processing
++ Infrastructure des micro-services, Spring Cache, entre autres.
+
+À première vue, Hazelcast et Redis sont très similaires. Ils peuvent s'attaquer à des cas d'utilisation similaires, notamment la mise en cache (*caching*), il peut être donc difficile de décider lequel utiliser. 
+
+
+**Caching :** 
+
+Hazelcast offre une très grande variété de modèles de mise en cache. Les plus courants sont **cache-aside**, Read-Through, Write-Through, Write-Behind et Near Cache.
+
+<ins>Avantages :</ins>
+
+Rapidité, performance en mémoire, facilité de développement et évolutivité sont les principales avantages.
+
+1. **Vitesse et évolutivité** 
+   * La rapidité du traitement de l'information est grande, quel que soit le secteur ou l'application. 
+   * Hazelcast offre la plus faible latence disponible combinée à un stockage haute densité pour optimiser les performances dans les conditions les plus exigeantes.
+   * La plateforme In-Memory Computing de Hazelcast offre des solutions de mise en cache en mémoire de classe mondiale, basées sur une architecture distribuée qui est extrêmement rapide et évolutive de manière transparente.
+2. **Sécurité**
+   * Basé sur une architecture de cryptographie Java, Hazelcast offre une communication TLS/SSL et un cryptage symétrique, soutenu par une authentification basée sur JAAS pour une vérification d'identité enfichable et une sécurité basée sur les rôles.
+3. **Langages de programmation**
+   * Bien que Hazelcast IMDG soit basé sur le langage de programmation Java, il possède les clients et API de langage de programmation suivants : Java, .NET, C++, Node.js, Python et Go.
+4.  **Structures de données distribuées**
+   * Parmi les collections standard, on peut mentionner : Map, Queue, Ringbuffer, Set, List, Multimap, Replicated Map et Cardinality Estimator.
+3. **Clustering**
+   * La plupart des opérations de regroupement ou clustering sont traitées automatiquement par Hazelcast, et ne nécessitent pas d'une intervention manuelle.
+Comme toute solution technologique, Hazelcast présente également des inconvénients :
+4. **Quering**
+   * Hazelcast comprend les graphiques d'objets complexes et fournit une query API. Hazelcast dispose également d'un support natif pour les index. Ils peuvent être appliqués via la configuration (XML|YAML) ou dynamiquement via l'API
+
+<ins>Inconvénients</ins>
+
+1. Licence nécessaire pour le SSL
+2. Hazelcast n'est pas encore très populaire. Au contraire, Redis est un standard de l'industrie depuis plusieurs années, prouvant sa supériorité sur les solutions de stockage de données distribuées existantes. Une simple recherche dans les tendances de Google permet de visualiser la concurrence au fil du temps.
+<img src="https://miro.medium.com/max/1400/1*zoXjQ0nj53W0_xpTw5KC2g.png" width="700"/>
+La comparaison entre les résultats de recherche Github pour "Redis" et "Hazelcast" renforce la popularité de Redis. 
+<img src="https://miro.medium.com/max/1400/1*KJ5MPvkHVY24j9X_JM9_gg.png" width="700"/>
+
+Les informations ci-dessus sont extraites de :
+
+* [Compare Redis and Hazelcast](https://hazelcast.org/compare-with-redis/), consulté le 29 novembre de 2020
+* [Hazelcast](https://en.wikipedia.org/wiki/Hazelcast), consulté le 29 novembre 2020.
+* [Hazelcast arrive sur le cloud pour accélérer les SGBD et donc les apps](https://www.lemondeinformatique.fr/actualites/lire-hazelcast%C2%A0arrive-sur-le%C2%A0cloud%C2%A0pour-accelerer-les-sgbd-et-donc-les%C2%A0apps-74702.html/), consulté le 29 novembre 2020.
+* [Cache Access Patterns](https://hazelcast.org/use-cases/caching/), consulté le 29 novembre 2020.
+* [Why Hazelcast](https://hazelcast.com/why-hazelcast/), consulté le 29 novembre 2020.
+* [Hazelcast IMDG Reference Manual](https://docs.hazelcast.org/docs/latest-dev/manual/html-single/#preface), consulté le 29 novembre 2020.
+* [Moving from Hazelcast to Redis](https://engineering.datorama.com/moving-from-hazelcast-to-redis-b90a0769d1cb), consulté le 29 novembre 2020.
+
+### B3. Solution retenue
 
 ### B4. Liste de métriques
 
