@@ -495,7 +495,7 @@ Les informations ci-dessus sont extraites de :
 * [Hazelcast IMDG Reference Manual](https://docs.hazelcast.org/docs/latest-dev/manual/html-single/#preface), consulté le 29 novembre 2020.
 * [Moving from Hazelcast to Redis](https://engineering.datorama.com/moving-from-hazelcast-to-redis-b90a0769d1cb), consulté le 29 novembre 2020.
 
-### B3. Solutions retenues
+### B3. Solution retenue
 
 ### B4. Liste de métriques
 
