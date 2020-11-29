@@ -1,0 +1,27 @@
+@startwbs
+
+* WBS du projet Système de Cache
+
+
+** Lancement
+*** Spécifications
+**** Définition du problème
+*** Etat de l'art
+**** Etude des systèmes de cache
+
+** Conception
+*** Choix des technologies
+**** Langage de programmation
+**** Système de Cache
+**** Système de gestion de base de données
+
+** Implementation
+*** Mise en place de la page web
+*** Création d'une base de données d'images
+*** Implementation du système de Cache
+
+** Evaluation
+*** Tests unitaires et d'intégration
+*** Mesure des performances
+
+@endwbs
