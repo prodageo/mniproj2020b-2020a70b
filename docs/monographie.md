@@ -469,7 +469,7 @@ Rapidité, performance en mémoire, facilité de développement et évolutivité
    * Basé sur une architecture de cryptographie Java, Hazelcast offre une communication TLS/SSL et un cryptage symétrique, soutenu par une authentification basée sur JAAS pour une vérification d'identité enfichable et une sécurité basée sur les rôles.
 3. **Langages de programmation**
    * Bien que Hazelcast IMDG soit basé sur le langage de programmation Java, il possède les clients et API de langage de programmation suivants : Java, .NET, C++, Node.js, Python et Go.
-4.  **Structures de données distribuées**
+4. **Structures de données distribuées**
    * Parmi les collections standard, on peut mentionner : Map, Queue, Ringbuffer, Set, List, Multimap, Replicated Map et Cardinality Estimator.
 3. **Clustering**
    * La plupart des opérations de regroupement ou clustering sont traitées automatiquement par Hazelcast, et ne nécessitent pas d'une intervention manuelle.
