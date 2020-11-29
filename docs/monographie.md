@@ -22,7 +22,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.2 | 25/11/2020 | Questions d'amorce + ajout de la qualification de la réference Apache Ignite In-Memory Database dans la Webographie + ajout de sections d'intérêt dans bibliographie pour le livre "The cache memory book, cache data and cache tag memories" + justification du facteur "Efficacité d'exécution" + ajout d'une phrase au lieu de formule dans A.6 car c'est le même facteur dérivé *Efficacité*|
 | 0.3 | 27/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***Architecture of Computing Systems - ARCS 2013*** + suppression de la section *Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256* car finalement un peu trop éloigné du sujet + référence du pattern Garbage Collector  |
 | 0.4 | 28/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***The cache memory book, cache data and cache tag memories*** +  ajout de ma source pour Garbage Compactor dans Références théoriques + explication de l'effet 'The thundering herd' dans Approche technique|
-| 0.5 | 29/11/2020 | Ajout de la justication de la solution technologique **Hazelcast** dans B2.|
+| 0.5 | 29/11/2020 | Ajout de la justication de la solution technologique **Hazelcast** dans B2. Ajout du contenu des parties B3 B4|
 
 ## Questions d'amorce
 
@@ -185,6 +185,7 @@ Il est important de noter que ce système n'est pas directement lié à la base 
 
 <ins>Indicateurs dérivés</ins>
 - Portabilité
+  * Formule : ?
 
 ### A7. Références théoriques
 
@@ -544,10 +545,36 @@ Sur l'image de droite, on peut voir la différence entre un système utilisant M
 2. Ne prend pas en charge les transactions
    * Memcached ne dispose pas d'un système de transactions, ce qui peut poser problème lorsqu'un enchaînement d'actions viendrait à échouer.
 
-
 ### B3. Solution retenue
 
+Nous avons choisi de retenir Redis comme solution. Sa popularité implique que cette solution possède une plus grande communauté, notamment vis-à-vis d'Hazelcast, et donc un meilleur support. 
+
+Ainsi, il nous paraît plus simple d'utiliser Redis étant donné qu'il s'agirait ici d'une première approche de ce genre de systèmes, et une communauté active implique qu'il y aura des réponses à un plus grands nombre de problèmes.
+
+Nous avons écarté Memcached car il ne gère pas les types de données avancés, notamment les ensembles, qui risquent d'être utile dans notre problématique. En effet, afin de choisir une image parmi un pool aléatoire, il sera pratique d'utiliser cette structure de données, qui est prise en charge par Redis, mais pas par Memcached.
+
+
 ### B4. Liste de métriques
+
+**Efficacité de stockage**:
+Pour ce facteur, nous proposons de mesurer le nombre de fois où le système retourne chercher une donnée sur un délai de temps fixé.
+
+1. Capacité fonctionelle :
+    Pour ce premier indicateur de base, nous mesurerons le temps d'affichage d'une image
+
+2. Fiabilité :
+    Pour ce second indicateur de base, nous mesurerons deux chose :
+        + Le nombre de réponses correctes/le nombre de requêtes total. Autrement dit le nombre d'images renvoyées qui correspondent à la requête sur le nombre total d'images demandées
+        
+**Efficacité d'exécution** : 
+Pour ce facteur, nous proposons de mesurer le nombre d'opérations exécutées par seconde (autrement dit le nombre d'images affichées par sec).
+
+1. Fiabilité : Pour l'indicateur de fiabilité nous reprenons les mêmes métriques que précédemment
+
+2. Facilité d'utilisation : Cet indicateur dépendant de l'avis de chaque développeur lors de la mise en place du système, nous pensons qu'il n'est pas vraiment mesurable et plutôt subjectif.
+
+**Facilité de migration** :
+
 
 ### B5. Découpage (WBS) pour réalisation des prototypes
 
