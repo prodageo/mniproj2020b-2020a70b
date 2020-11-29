@@ -553,6 +553,13 @@ Ainsi, il nous paraît plus simple d'utiliser Redis étant donné qu'il s'agirai
 
 Nous avons écarté Memcached car il ne gère pas les types de données avancés, notamment les ensembles, qui risquent d'être utile dans notre problématique. En effet, afin de choisir une image parmi un pool aléatoire, il sera pratique d'utiliser cette structure de données, qui est prise en charge par Redis, mais pas par Memcached.
 
+<ins>Description technique</ins>
+
+Redis travaille avec un ensemble de données en mémoire (**in-memory** dataset). En fonction du cas d'utilisation, il peut-être conservé soit en vidant de temps en temps l'ensemble des données sur le disque, soit en ajoutant chaque commande à un log. La persistance est une option pouvant être désactivée, au cas où nous aurions juste besoin d'un cache en mémoire riche en fonctionnalités et en réseau.
+
+La partie B2 explique les différentes foncitonalités de Redis.
+
+La [documentation de Redis](https://redis.io/documentation) fournit des informations complémentaires.
 
 ### B4. Liste de métriques
 
