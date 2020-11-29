@@ -22,7 +22,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.2 | 25/11/2020 | Questions d'amorce + ajout de la qualification de la réference Apache Ignite In-Memory Database dans la Webographie + ajout de sections d'intérêt dans bibliographie pour le livre "The cache memory book, cache data and cache tag memories" + justification du facteur "Efficacité d'exécution" + ajout d'une phrase au lieu de formule dans A.6 car c'est le même facteur dérivé *Efficacité*|
 | 0.3 | 27/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***Architecture of Computing Systems - ARCS 2013*** + suppression de la section *Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256* car finalement un peu trop éloigné du sujet + référence du pattern Garbage Collector  |
 | 0.4 | 28/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***The cache memory book, cache data and cache tag memories*** +  ajout de ma source pour Garbage Compactor dans Références théoriques + explication de l'effet 'The thundering herd' dans Approche technique|
-| 0.5 | 29/11/2020 | Ajout de la justication de la solution technologique **Hazelcast** dans B2.|
+| 0.5 | 29/11/2020 | Ajout de la justication de la solution technologique **Hazelcast** dans B2. Ajout du contenu de la partie B4|
 
 ## Questions d'amorce
 
