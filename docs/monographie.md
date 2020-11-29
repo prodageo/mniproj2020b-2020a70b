@@ -185,6 +185,7 @@ Il est important de noter que ce système n'est pas directement lié à la base 
 
 <ins>Indicateurs dérivés</ins>
 - Portabilité
+  * Formule : ?
 
 ### A7. Références théoriques
 
