@@ -118,6 +118,8 @@ virtuelles et de l'indexation associative.
     * Cache coherence in mind system: Petri net model for minimal state solution.
     * Optimization of hierarchical memory systems for high-speed computers
 
+    Ces deux sections présentent des applications du caching à des environnements spécifiques, à savoir les environnements de calcul à très haute vitesse. Ce type d'environnement implique une optimisation plus importante des outils utilisés, et donc une utilisation plus avancée du système de cache.
+
 ### A4. Acteurs
 
 1. ***Google***:
@@ -195,6 +197,8 @@ Ce pattern est utilisé lorsque les ressources qui seront demandées sont prévi
 
 Afin d'atteindre cet objectif, le Caching Pattern stocke les données auquelles la machine a déjà accedé localement, ce qui permet ensuite de les recharger rapidement pour les réutiliser, sans avoir à les redemander auprès de la source distante. Lorsque les ressources stockées ne sont plus nécessaires, elles sont libérées pour gagner en espace mémoire. Elles devront cependant refaire l'objet d'une requêtes à la source pour être rechargées après cela.
 
+*Source : [Caching Patterns and Implementation](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.648.9851&rep=rep1&type=pdf), consulté le 05/11/2020.*
+
 **Cache-Aside**
 
 Lors de l'utilisation d'un cache, il serait utopique de penser que les données mises en cache seront toujours conformes aux données distantes, et ce quoiqu'il arrive. Il est très fréquent, notamment lors d'accès concurrents à une ressource, que celle-ci soit modifiée tandis qu'elle se trouve dans le cache d'un utilisateur. C'est le problem que cherche à résoudre le Cache-Aside pattern. 
@@ -202,6 +206,8 @@ Lors de l'utilisation d'un cache, il serait utopique de penser que les données 
 De nombreux systèmes aujourd'hui contournent ce problème en intégrant des opérations de double lecture et d'écriture différée. Ainsi, les modifications apportées au données du cache sont immédiatement répercutées sur la base de données. Tout cela est possible si l'application récupérant les données établit une référence au cache.
 
 Cependant, dans le cas ou le cache n'intégrerait pas ces fonctionnalités, le pattern Cache-Aside permet d'émuler la double lecture. A la récupération de la donnée distante, une copie de celle-ci est sauvegardée dans le cache. Lors de la mise à jour d'un élément en cache, l'application peut ainsi écrire directement sur la base de données, puis invalider l'élément en cache.
+
+*Source : [Modèle Cache-Aside](https://docs.microsoft.com/fr-fr/azure/architecture/patterns/cache-aside), consulté pour la dernière fois le 05/11/2020.*
 
 **Garbage Collection**
 
