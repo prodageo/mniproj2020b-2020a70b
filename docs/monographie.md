@@ -502,8 +502,10 @@ Les informations ci-dessus sont extraites de :
 * [Hazelcast IMDG Reference Manual](https://docs.hazelcast.org/docs/latest-dev/manual/html-single/#preface), consulté le 29 novembre 2020.
 * [Moving from Hazelcast to Redis](https://engineering.datorama.com/moving-from-hazelcast-to-redis-b90a0769d1cb), consulté le 29 novembre 2020.
 
+## Memcached 
 
-## Memcached
+<img src="https://community.jaguar-network.com/wp-content/uploads/2019/02/memcached-logo.png.webp" width="100"/></p> 
+
 *Site officiel : https://memcached.org/*
 
 <img src="https://memcached.org/images/memcached-usage.png" style="float:right"/>
