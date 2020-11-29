@@ -396,7 +396,7 @@ En outre, Redis offre plusieurs services de cache (**cache-aside (Lazy-loading)*
 <ins>Avantages :</ins>
 
 1. **Stockage de données en mémoire** 
-   * Contrairement aux BDs sur disque, où la plupart des opérations nécessitent un aller-retour au disque, les stockages de données dn mémoire ne subissent pas ce désavantage => Ceci augmente le nombre d'opérations pouvant être pris en charge et diminue le temps de réponse 
+   * Contrairement aux BDs sur disque, où la plupart des opérations nécessitent un aller-retour au disque, les stockages de données en mémoire ne subissent pas ce désavantage => Ceci augmente le nombre d'opérations pouvant être pris en charge et diminue le temps de réponse 
 2. **Rapidité d'exécution**
    * Notamment grâce à ce qui a été expliqué précédemment
    * Accès aux données en quelques microsecondes
