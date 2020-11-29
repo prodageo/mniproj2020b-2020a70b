@@ -545,10 +545,29 @@ Sur l'image de droite, on peut voir la différence entre un système utilisant M
 2. Ne prend pas en charge les transactions
    * Memcached ne dispose pas d'un système de transactions, ce qui peut poser problème lorsqu'un enchaînement d'actions viendrait à échouer.
 
-
 ### B3. Solution retenue
 
 ### B4. Liste de métriques
+
+**Efficacité de stockage**:
+Pour ce facteur, nous proposons de mesurer le nombre de fois où le système retourne chercher une donnée sur un délai de temps fixé.
+
+1. Capacité fonctionelle :
+    Pour ce premier indicateur de base, nous mesurerons le temps d'affichage d'une image
+
+2. Fiabilité :
+    Pour ce second indicateur de base, nous mesurerons deux chose :
+        + Le nombre de réponses correctes/le nombre de requêtes total. Autrement dit le nombre d'images renvoyées qui correspondent à la requête sur le nombre total d'images demandées
+        
+**Efficacité d'exécution** : 
+Pour ce facteur, nous proposons de mesurer le nombre d'opérations exécutées par seconde (autrement dit le nombre d'images affichées par sec).
+
+1. Fiabilité : Pour l'indicateur de fiabilité nous reprenons les mêmes métriques que précédemment
+
+2. Facilité d'utilisation : Cet indicateur dépendant de l'avis de chaque développeur lors de la mise en place du système, nous pensons qu'il n'est pas vraiment mesurable et plutôt subjectif.
+
+**Facilité de migration** :
+
 
 ### B5. Découpage (WBS) pour réalisation des prototypes
 
