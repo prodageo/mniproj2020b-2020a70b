@@ -501,6 +501,50 @@ Les informations ci-dessus sont extraites de :
 * [Hazelcast IMDG Reference Manual](https://docs.hazelcast.org/docs/latest-dev/manual/html-single/#preface), consulté le 29 novembre 2020.
 * [Moving from Hazelcast to Redis](https://engineering.datorama.com/moving-from-hazelcast-to-redis-b90a0769d1cb), consulté le 29 novembre 2020.
 
+
+## Memcached
+*Site officiel : https://memcached.org/*
+
+<img src="https://memcached.org/images/memcached-usage.png" style="float:right"/>
+Memcached est un système de cache distribué, générique par nature, mais originellement conçu pour augmenter la rapidité des applications web dynamiques en réduisant le taux de charge de la base de données. Concrètement, Memcached permet de récupérer sur le système de la mémoire inutilisée pour la réallouer là où elle est plus nécessaire. Cela permet ainsi un meilleur usage de la mémoire et donc une meilleure optimisation des ressources.
+
+
+Sur l'image de droite, on peut voir la différence entre un système utilisant Memcached, et un ne l'utilisant pas :
+
+* Sans Memcached, les différents noeuds de cache sont indépendants, octroyant chacun une capacité de cache de 64Mb. Il s'agit d'une stratégie de déploiement classique, mais qui peut souvent gâcher de la mémoire. En effet, si un noeud n'est pas utilisé à sa capacité maximale, la mémoire disponible restante est simplement inutilisée.
+
+* Dans le cas où l'on utilise Memcached, les noeuds de cache sont combinés, permettant à tous les objets d'être stockés et récupérés au même endroit. Cela permet aussi d'éventuellement réallouer différemment la mémoire dans le cas où la différence de charge entre les serveurs serait importante.
+
+<ins>Avantages :</ins>
+
+*Source : https://aws.amazon.com/fr/memcached/*
+
+1. **Simplicité**
+   * Memcached est conçu pour être générique par nature, ce qui le rend très facile à utiliser.
+   * De plus, de nombreux clients open source sont disponible pour son utilisation.
+   * Enfin, il prend en charge un grand nombre de langages, dont Python, Java, C, C++, C#, JavaScript, etc.
+2. **Rapidité**
+   * Tout comme Redis, Memcached conserve toutes ses données dans la mémoire principale du serveur, plutôt que sur un disque dur.
+   * Le résultat est le suivant : une rapidité exceptionnelle, avec des opérations d'écriture et de lecture prenant en moyenne moins d'une milliseconde.
+3. **Évolutivité**
+   * Memcached utilise une architecture distribuée et multithread, ce qui facilite les mises à l'échelle.
+   * Le côté multithread de Memcached permet de plus d'utiliser plusieurs coeurs sur un noeud donné, afin d'augmenter facilement les capacités de calcul.
+4. **Communauté**
+   * Memcached est un projet open source soutenu par une grande communauté.
+   * Grâce à cela, certaines applications telles que WordPress et Django prennent directement en charge son utilisation pour améliorer les performances.
+
+<ins>Inconvénients : </ins>
+
+*Source : https://aws.amazon.com/fr/elasticache/redis-vs-memcached/*
+
+1. Limité aux structures de données simples
+   * Memcached ne permet la prise en charge des structures de données complexes, telles que les listes ou les ensembles par exemples.
+   * Cela peut parfois limiter ses cas d'utilisations, ou rendre plus complexe la mise en oeuvre de certains outils.
+
+2. Ne prend pas en charge les transactions
+   * Memcached ne dispose pas d'un système de transactions, ce qui peut poser problème lorsqu'un enchaînement d'actions viendrait à échouer.
+
+
 ### B3. Solution retenue
 
 ### B4. Liste de métriques
