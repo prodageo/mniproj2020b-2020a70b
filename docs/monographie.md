@@ -22,6 +22,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.2 | 25/11/2020 | Questions d'amorce + ajout de la qualification de la réference Apache Ignite In-Memory Database dans la Webographie + ajout de sections d'intérêt dans bibliographie pour le livre "The cache memory book, cache data and cache tag memories" + justification du facteur "Efficacité d'exécution" + ajout d'une phrase au lieu de formule dans A.6 car c'est le même facteur dérivé *Efficacité*|
 | 0.3 | 27/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***Architecture of Computing Systems - ARCS 2013*** + suppression de la section *Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256* car finalement un peu trop éloigné du sujet + référence du pattern Garbage Collector  |
 | 0.4 | 28/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***The cache memory book, cache data and cache tag memories*** +  ajout de ma source pour Garbage Compactor dans Références théoriques + explication de l'effet 'The thundering herd' dans Approche technique|
+| 0.5 | 29/11/2020 | Ajout de la justication de la solution technologique **Hazelcast** dans B2.|
 
 ## Questions d'amorce
 
@@ -433,6 +434,66 @@ En outre, Redis offre plusieurs services de cache (**cache-aside (Lazy-loading)*
 Les informations ci-dessus sont extraites de [la page consagrée à Redis sur Amazon](https://aws.amazon.com/fr/redis/), consulté le 28 novembre 2020.
 
 Les inconvénients sont extraits de [Compare Redis and Hazelcast](https://hazelcast.org/compare-with-redis/), consulté le 28 novembre de 2020
+
+<img src="https://hazelcast.com/images/logos/hazelcast-logo-horz.svg" width="300"/></p>
+
+Site officiel de Hazelcast : https://hazelcast.com
+
+Hazelcast IMDG est une solution open source in-memory Java permettant d’accélérer les bases de données et les applications à l’aide de clusters dédiés. La plateforme de type *data grid* est conçue pour servir de cache de données pour les charges de travail à haut volume d'informations et à faible latence transactionnelle. Dans une grille Hazelcast, les données sont réparties uniformément entre les nœuds d'un groupe d'ordinateurs, ce qui permet une mise à l'échelle horizontale du traitement et du stockage disponible. Des sauvegardes sont également réparties entre les nœuds afin de se prémunir contre toute défaillance d'un seul nœud. Hazelcast utilise la base de données relationnelle en plus de la mémoire primaire pour le stockage des données.
+
+Hazelcast peut fonctionner sur site, dans le nuage (Amazon Web Services, Microsoft Azure, Cloud Foundry, OpenShift), virtuellement (VMware) et dans des conteneurs Docker. Parmi les cas d'utilisation typiques pour Hazelcast l'on trouve :
+
++ Base de données clé-valeur
++ Stockage de données NoSQL
++ Cache-as-a-service
++ Distributed cache
++ In-memory processing
++ Infrastructure des micro-services, Spring Cache, entre autres.
+
+À première vue, Hazelcast et Redis sont très similaires. Ils peuvent s'attaquer à des cas d'utilisation similaires, notamment la mise en cache (*caching*), il peut être donc difficile de décider lequel utiliser. 
+
+
+**Caching :** 
+
+Hazelcast offre une très grande variété de modèles de mise en cache. Les plus courants sont **cache-aside**, Read-Through, Write-Through, Write-Behind et Near Cache.
+
+<ins>Avantages :</ins>
+
+Rapidité, performance en mémoire, facilité de développement et évolutivité sont les principales avantages.
+
+1. **Vitesse et évolutivité** 
+   * La rapidité du traitement de l'information est grande, quel que soit le secteur ou l'application. 
+   * Hazelcast offre la plus faible latence disponible combinée à un stockage haute densité pour optimiser les performances dans les conditions les plus exigeantes.
+   * La plateforme In-Memory Computing de Hazelcast offre des solutions de mise en cache en mémoire de classe mondiale, basées sur une architecture distribuée qui est extrêmement rapide et évolutive de manière transparente.
+2. **Sécurité**
+   * Basé sur une architecture de cryptographie Java, Hazelcast offre une communication TLS/SSL et un cryptage symétrique, soutenu par une authentification basée sur JAAS pour une vérification d'identité enfichable et une sécurité basée sur les rôles.
+3. **Langages de programmation**
+   * Bien que Hazelcast IMDG soit basé sur le langage de programmation Java, il possède les clients et API de langage de programmation suivants : Java, .NET, C++, Node.js, Python et Go.
+4.  **Structures de données distribuées**
+   * Parmi les collections standard, on peut mentionner : Map, Queue, Ringbuffer, Set, List, Multimap, Replicated Map et Cardinality Estimator.
+3. **Clustering**
+   * La plupart des opérations de regroupement ou clustering sont traitées automatiquement par Hazelcast, et ne nécessitent pas d'une intervention manuelle.
+Comme toute solution technologique, Hazelcast présente également des inconvénients :
+4. **Quering**
+   * Hazelcast comprend les graphiques d'objets complexes et fournit une query API. Hazelcast dispose également d'un support natif pour les index. Ils peuvent être appliqués via la configuration (XML|YAML) ou dynamiquement via l'API
+
+<ins>Inconvénients</ins>
+
+1. Licence nécessaire pour le SSL
+2. Hazelcast n'est pas encors très populaire. Au contraire, Redis est un standard de l'industrie depuis plusieurs années, prouvant sa supériorité sur les solutions de stockage de données distribuées existantes. Une simple recherche dans les tendances de Google permet de visualiser la concurrence au fil du temps.
+<img src="https://miro.medium.com/max/1400/1*zoXjQ0nj53W0_xpTw5KC2g.png" width="700"/>
+La comparaison entre les résultats de recherche Github pour "Redis" et "Hazelcast" renforce la popularité de Redis. 
+<img src="https://miro.medium.com/max/1400/1*KJ5MPvkHVY24j9X_JM9_gg.png" width="700"/>
+
+Les informations ci-dessus sont extraites de :
+
+* [Compare Redis and Hazelcast](https://hazelcast.org/compare-with-redis/), consulté le 29 novembre de 2020
+* [Hazelcast](https://en.wikipedia.org/wiki/Hazelcast), consulté le 29 novembre 2020.
+* [Hazelcast arrive sur le cloud pour accélérer les SGBD et donc les apps](https://www.lemondeinformatique.fr/actualites/lire-hazelcast%C2%A0arrive-sur-le%C2%A0cloud%C2%A0pour-accelerer-les-sgbd-et-donc-les%C2%A0apps-74702.html/), consulté le 29 novembre 2020.
+* [Cache Access Patterns](https://hazelcast.org/use-cases/caching/), consulté le 29 novembre 2020.
+* [Why Hazelcast](https://hazelcast.com/why-hazelcast/), consulté le 29 novembre 2020.
+* [Hazelcast IMDG Reference Manual](https://docs.hazelcast.org/docs/latest-dev/manual/html-single/#preface), consulté le 29 novembre 2020.
+* [Moving from Hazelcast to Redis](https://engineering.datorama.com/moving-from-hazelcast-to-redis-b90a0769d1cb), consulté le 29 novembre 2020.
 
 ### B3. Solutions retenues
 
