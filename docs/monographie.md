@@ -431,7 +431,7 @@ En outre, Redis offre plusieurs services de cache (**cache-aside (Lazy-loading)*
 3. Redis ne supporte pas nativement les index 
    * Nécessité de créer ses propres structures d'index et de les mettre soit-même à jour et de s'y référer. Ceci est décrit dans la [documentation de Redis](https://redis.io/topics/indexes)
 
-Les informations ci-dessus sont extraites de [la page consagrée à Redis sur Amazon](https://aws.amazon.com/fr/redis/), consulté le 28 novembre 2020.
+Les informations ci-dessus sont extraites de [la page consacrée à Redis sur Amazon](https://aws.amazon.com/fr/redis/), consulté le 28 novembre 2020.
 
 Les inconvénients sont extraits de [Compare Redis and Hazelcast](https://hazelcast.org/compare-with-redis/), consulté le 28 novembre de 2020
 
@@ -480,7 +480,7 @@ Comme toute solution technologique, Hazelcast présente également des inconvén
 <ins>Inconvénients</ins>
 
 1. Licence nécessaire pour le SSL
-2. Hazelcast n'est pas encors très populaire. Au contraire, Redis est un standard de l'industrie depuis plusieurs années, prouvant sa supériorité sur les solutions de stockage de données distribuées existantes. Une simple recherche dans les tendances de Google permet de visualiser la concurrence au fil du temps.
+2. Hazelcast n'est pas encore très populaire. Au contraire, Redis est un standard de l'industrie depuis plusieurs années, prouvant sa supériorité sur les solutions de stockage de données distribuées existantes. Une simple recherche dans les tendances de Google permet de visualiser la concurrence au fil du temps.
 <img src="https://miro.medium.com/max/1400/1*zoXjQ0nj53W0_xpTw5KC2g.png" width="700"/>
 La comparaison entre les résultats de recherche Github pour "Redis" et "Hazelcast" renforce la popularité de Redis. 
 <img src="https://miro.medium.com/max/1400/1*KJ5MPvkHVY24j9X_JM9_gg.png" width="700"/>
