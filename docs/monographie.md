@@ -23,6 +23,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.3 | 27/11/2020 | Ajout de la justication des choix de sections pour la référence bibliographique ***Architecture of Computing Systems - ARCS 2013*** + suppression de la section *Shrinking L1 Instruction Caches to Improve Energy–Delay in SMTEmbedded Processors, page 256* car finalement un peu trop éloigné du sujet + référence du pattern Garbage Collector  |
 | 0.4 | 28/11/2020 | Ajout de la justication des choix de sections pour les références bibliographiques + ajout des sources manquantes dans A7 + explication des caractéristiques *Time-to-live*, *Evictions* et *The thundering herd* dans B1|
 | 0.5 | 29/11/2020 | Ajout de la justication des solutions technologiques **Memcached** et **Hazelcast** dans B2. Ajout du contenu des parties B3 et B4 + ajout du schéma dans B5|
+| 0.6 | 01/12/2020 | Ajout de l'explication de la mesure de la facilité de migration|
 
 ## Questions d'amorce
 
@@ -582,7 +583,7 @@ Pour ce facteur, nous proposons de mesurer le nombre d'opérations exécutées p
 2. Facilité d'utilisation : Cet indicateur dépendant de l'avis de chaque développeur lors de la mise en place du système, nous pensons qu'il n'est pas vraiment mesurable et plutôt subjectif.
 
 **Facilité de migration** :
-
+La facilité de migration étant un facteur purement qualitatif, nous pensons qu'il ne s'agit pas de quelque chose de mesurable formellement. Ainsi, nous étudierons ce facteur de façon subjective.
 
 ### B5. Découpage (WBS) pour réalisation des prototypes
 
