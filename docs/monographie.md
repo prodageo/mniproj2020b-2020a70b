@@ -592,11 +592,19 @@ La facilité de migration étant un facteur purement qualitatif, nous pensons qu
 
 ## Partie C
 
-### C1. Architecture solution W
+### C1. Architecture solution X
 
-### C2. Architecture solution X
+<img src="../conception/d_deployment/d_deployment.png" width="800"/>
 
-### C3. Architecture solution Y
+<ins>Explication du diagramme de déploiement :</ins>
 
-### C4. Architecture solution Z
+L'utilisateur se connecte au site web via son navigateur. Il clique sur le bouton "Afficher une image". Le service Web choisit une image aléatoire et la cherche dans le cache (Redis). Si elle n'est pas présente, il la demande à la base de données qui la lui renvoie. Le service Web va alors récupérer et stocker cette nouvelle image dans le cache. Cette dernière est alors affichée sur l'interface web.  
+
+**Sources**
+
+[Diagramme de déploiement, Wikipédia](https://fr.wikipedia.org/wiki/Diagramme_de_d%C3%A9ploiement) (consulté le 12 décembre 2020)
+
+[Using Redis with Nodejs and MongoDB](https://medium.com/@subhrapaladhi9/using-redis-with-nodejs-and-mongodb-28e5a39a2696) (consulté le 12 décembre 2020)
+
+
  
