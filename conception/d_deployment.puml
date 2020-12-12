@@ -32,7 +32,8 @@ Routeur -right- WS
 
 IW <--> Service
 Service --> Cache #blue: "1. Interroge le cache"
-Cache --> Service #blue: "2. Retourne l'objet si présent"
+Cache --> Service #blue: "2. Retourne la donnée si présente"
+Service --> Cache #blue: "5. Ajoute la donnée au cache"
 
 
 Service <-- database #green: "4. Envoi de la donnée"
