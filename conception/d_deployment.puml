@@ -1,0 +1,42 @@
+@startuml
+
+
+rectangle "ServeurWeb"  as WS{
+    component InterfaceWeb as IW
+    component ServiceWeb as Service
+    component Redis as Cache
+}
+
+node Routeur
+
+rectangle "Navigateur"  as WB {
+
+}
+
+
+rectangle "ServeurBaseDeDonnees"  as DS{
+    database BaseDeDonnees as database {
+        artifact Images
+    }
+}
+
+
+actor Utilisateur as User
+
+
+
+User <-right-> WB
+
+WB -right- Routeur
+Routeur -right- WS
+
+IW <--> Service
+Service --> Cache #blue: "1. Interroge le cache"
+Cache --> Service #blue: "2. Retourne l'objet si présent"
+
+
+Service <-- database #green: "4. Envoi de la donnée"
+Service --> database #green: "3. Données non présente \nen chache :\ninterrogation de la BD"
+
+
+@enduml
