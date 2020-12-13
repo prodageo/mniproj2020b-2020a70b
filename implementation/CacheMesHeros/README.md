@@ -1,6 +1,13 @@
 
 # CacheMesHeros
 
+Cette application a été programmé à l'aide de :
+
+* Node.js
+* Express.js
+* Redis
+* MongoDB
+
 ## Installer tous les modules
 
 `npm i`
