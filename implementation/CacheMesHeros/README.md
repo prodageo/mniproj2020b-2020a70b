@@ -31,3 +31,16 @@ De même pour mongodb s'il n'est pas lancé (pour vérifier il faut taper `sudo 
 
 `npm run start`
 
+## Tuto MongoDB
+
+Pour consulter notre base de données :
+
+`use myHeroImages`
+
+Pour voir la liste des collections disponibles :
+
+`show collections`
+
+Pour supprimer notre collection après s'être placée dans la db **myHeroImage**:
+
+`db.heroImg.drop()`
