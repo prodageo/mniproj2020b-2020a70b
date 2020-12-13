@@ -24,6 +24,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.4 | 28/11/2020 | Ajout de la justication des choix de sections pour les références bibliographiques + ajout des sources manquantes dans A7 + explication des caractéristiques *Time-to-live*, *Evictions* et *The thundering herd* dans B1|
 | 0.5 | 29/11/2020 | Ajout de la justication des solutions technologiques **Memcached** et **Hazelcast** dans B2. Ajout du contenu des parties B3 et B4 + ajout du schéma dans B5|
 | 0.6 | 01/12/2020 | Ajout de l'explication de la mesure de la facilité de migration|
+| 0.7 | 12/12/2020 | Ajout du jalon C |
 
 ## Questions d'amorce
 
