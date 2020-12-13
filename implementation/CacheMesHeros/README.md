@@ -1,7 +1,7 @@
 
 # CacheMesHeros
 
-Cette application a été programmé à l'aide de :
+Cette application a été programmée à l'aide de :
 
 * Node.js
 * Express.js
