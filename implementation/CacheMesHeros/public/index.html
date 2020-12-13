@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="favicon.ico" rel="icon" type="image/x-icon" />
+        <title>Cache mes Heros</title>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    </head>
+    <body>
+        <h1>Bienvenue sur CacheMesHeros !</h1>
+        <button onclick=afficherImage()>Afficher une image</button>
+        <br/>
+        <span id="heroImageSpan"></span>
+    </body>
+    <script type="text/javascript">
+        let socket = io.connect();
+
+        function afficherImage(){
+            socket.emit('chercherImg');
+        }
+
+        socket.on('afficherImg', ({img})=>{
+            try {
+                document.getElementById("heroImageSpan").innerHTML = '<img id="heroImage" src="data:image/png;base64,'+img+'" alt="myHeroImage"/>';
+            } catch(err) {
+                alert(err)
+            }
+            
+        })
+    </script>
+</html>
