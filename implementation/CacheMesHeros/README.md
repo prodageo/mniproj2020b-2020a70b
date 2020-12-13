@@ -38,6 +38,12 @@ De même pour mongodb s'il n'est pas lancé (pour vérifier il faut taper `sudo 
 
 `npm run start`
 
+## Accéder au site
+
+Il faut :
+1. Ouvrir votre navigateur préféré
+2. Taper http://localhost:3000/api/cachemesheros/ comme url
+
 ## Tuto MongoDB
 
 Pour consulter notre base de données :
