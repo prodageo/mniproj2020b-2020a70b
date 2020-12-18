@@ -12,7 +12,7 @@ export function readImages (dirname, onFileContent) {
           console.error(err)
           return
         }
-        onFileContent(filename, content)
+        onFileContent(content)
       })
     })
   })
