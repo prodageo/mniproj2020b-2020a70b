@@ -30,6 +30,10 @@ De même pour mongodb s'il n'est pas lancé (pour vérifier il faut taper `sudo 
 
 `sudo systemctl start mongod`
 
+## Vider le cache
+
+`redis-cli flushall`
+
 ### En mode développement
 
 `npm run start:dev`
