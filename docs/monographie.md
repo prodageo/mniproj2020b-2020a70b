@@ -623,6 +623,8 @@ Le dossier source contient le code gérant la partie back-end du prototype. Le d
 
 Dans le dossier public, se trouve le fichier index.html contenant le code de la page HTML vu par l'utilisateur et gérant le comportement de la socket côté client.
 
+Enfin il y a un fichier README.md qui présente les différentes étapes du lancement du prototype.
+
 ### C3. Résultats
 
 
