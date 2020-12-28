@@ -628,7 +628,6 @@ Enfin il y a un fichier README.md qui présente les différentes étapes du lanc
 
 Voici un diagramme séquence système qui illustre l'implémentation de notre pattern Cache-aside :
 
-<img src="./diag/diag_seq_sys.png" width="600"/>
 ### C3. Résultats
 
 
