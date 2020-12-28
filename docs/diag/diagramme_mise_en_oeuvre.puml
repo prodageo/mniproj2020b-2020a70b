@@ -7,10 +7,36 @@ file index.html
 folder src {
 folder back {
 file app.js
-file utils.js
+file utils.js [
+utils.js
+----
+readImages(dirname,onFileContent)
+getImageInDB(randomnumber,db)
+]
 }
 }
 file package.json
 file README.md
+}
+database myHeroImages {
+card heroImg [
+Image 1
+----
+Image 2
+----
+Image 3
+----
+Image 4
+----
+Image 5
+]
+}
+database redisCache {
+card redis [
+Image 1 
+]
+app.js <----> myHeroImages : interagit avec
+app.js <----> redisCache : interagit avec
+app.js <...> index.html : communiquent par socket
 }
 @enduml
