@@ -609,7 +609,19 @@ L'utilisateur se connecte au site web via son navigateur. Il clique sur le bouto
 
 ### C2. Mise en oeuvre
 
+<img src="./diag/diagramme_mise_en_oeuvre.png" width="600"/>
 
+Le diagramme ci-dessus décrit l'organisation de notre implémentation. Nous avons choisi d'utiliser javascript (Node.js) pour le code, MongoDB comme serveur de base de données (pour sa simplicité d'utilisation) et Redis pour le système de cache (pour les raisons évoquées précédemment). Le dossier images contient les 5 hero-images qui vont être stockées dans la base de données que l'on a appelé myHeroImages. Le fichier package.json va contenir toutes les dépendances nécessaires au fonctionnement du prototype et qui doivent être installées. 
+
+Le dossier source contient le code gérant la partie back-end du prototype. Le dossier back est composé de deux fichiers :
+
+1. utils.js : notre bibliothèque de fonctions contenant :
+   + la fonction readImages qui va parcourir l'ensemble des images contenues dans le dossier image et fait appel à une fonction callback (onFileContent) qui correspondra à l'insertion de chaque image dans la collection heroImg de la base de données myHeroImages.
+   + la fonction getImageInDB qui va récupérer l'image correspondant à l'id donné en entrée dans la base de données myHeroImages.
+
+2. app.js : Ce fichier contient le code gérant la socket côté serveur, toutes les interactions entre le serveur Node et le serveur de MongoDB, le serveur Node et le serveur de Redis Cache. C'est dans ce fichier que le pattern Cache-aside est implémenté. Par exemple dans le diagramme ci-dessus le cache ne connaît que l'image 1. Si l'image 2 doit être affichée, elle sera récupérée dans la base de données myHeroImages puis insérer dans le cache redisCache.
+
+Dans le dossier public, se trouve le fichier index.html contenant le code de la page HTML vu par l'utilisateur et gérant le comportement de la socket côté client.
 
 ### C3. Résultats
 
