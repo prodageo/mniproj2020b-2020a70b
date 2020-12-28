@@ -1,0 +1,23 @@
+@startuml
+actor Utilisateur 
+participant "Site Web"
+participant "Serveur Node"
+participant redisCache
+participant myHeroImages
+
+Utilisateur --> "Site Web" : clique sur Afficher une image
+"Site Web" --> "Serveur Node" : émet l'évènement chercherImg
+"Serveur Node" --> "Serveur Node" : tire un id aléatoire entre 1 et 5
+"Serveur Node" --> redisCache : cherche l'image de l'id
+alt redisCache has image
+redisCache --> "Serveur Node": retourne l'image
+"Serveur Node" --> "Site Web": émet l'évènement afficherImg
+"Site Web" --> Utilisateur : afficherImg(img) 
+else not found
+"Serveur Node" --> myHeroImages : cherche l'image de l'id
+myHeroImages --> "Serveur Node" : retourne l'image de l'id
+"Serveur Node" --> redisCache : insère l'image de l'id dans le cache
+"Serveur Node" --> "Site Web" : émet l'évènement afficherImg
+"Site Web" --> Utilisateur : afficherImg(img) 
+end
+@enduml
