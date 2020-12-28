@@ -25,6 +25,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.5 | 29/11/2020 | Ajout de la justication des solutions technologiques **Memcached** et **Hazelcast** dans B2. Ajout du contenu des parties B3 et B4 + ajout du schéma dans B5|
 | 0.6 | 01/12/2020 | Ajout de l'explication de la mesure de la facilité de migration|
 | 0.7 | 12/12/2020 | Ajout du jalon C |
+| 0.8 | 28/12/2020 | Ajout de la partie mise en oeuvre du jalon C |
 
 ## Questions d'amorce
 
@@ -625,6 +626,9 @@ Dans le dossier public, se trouve le fichier index.html contenant le code de la 
 
 Enfin il y a un fichier README.md qui présente les différentes étapes du lancement du prototype.
 
+Voici un diagramme séquence système qui illustre l'implémentation de notre pattern Cache-aside :
+
+<img src="./diag/diag_seq_sys.png" width="600"/>
 ### C3. Résultats
 
 
