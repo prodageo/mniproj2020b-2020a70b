@@ -607,5 +607,11 @@ L'utilisateur se connecte au site web via son navigateur. Il clique sur le bouto
 
 [Using Redis with Nodejs and MongoDB](https://medium.com/@subhrapaladhi9/using-redis-with-nodejs-and-mongodb-28e5a39a2696) (consulté le 12 décembre 2020)
 
+### C2. Mise en oeuvre
+
+
+
+### C3. Résultats
+
 
  
