@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-export function readImages (dirname, onFileContent) {
+export function readImages(dirname, onFileContent) {
   fs.readdir(dirname, (err, filenames) => {
     if (err) {
       console.error(err)
@@ -18,7 +18,7 @@ export function readImages (dirname, onFileContent) {
   })
 }
 
-export function getImageInDB (randomnumber, db) {
+export function getImageInDB(randomnumber, db) {
   return new Promise((resolve, reject) => {
     db.collection('heroImg').findOne({ id: randomnumber }, (err, result) => {
       if (err) {
@@ -29,3 +29,4 @@ export function getImageInDB (randomnumber, db) {
     })
   })
 }
+
