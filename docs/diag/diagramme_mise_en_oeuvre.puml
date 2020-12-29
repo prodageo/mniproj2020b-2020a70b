@@ -1,6 +1,7 @@
 @startuml
 folder CacheMesHeros {
 folder images
+folder tests
 folder public {
 file index.html
 }
