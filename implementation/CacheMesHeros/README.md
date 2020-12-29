@@ -30,6 +30,8 @@ De même pour mongodb s'il n'est pas lancé (pour vérifier il faut taper `sudo 
 
 `sudo systemctl start mongod`
 
+Si macOS : `brew services start mongodb-community@4.4` 
+
 ## Vider le cache
 
 `redis-cli flushall`
