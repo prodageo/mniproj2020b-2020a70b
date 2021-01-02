@@ -1,13 +1,14 @@
 
 // const fs = jest.createMockFromModule('fs');
 import { readImages, getImageInDB } from '../src/back/utils';
-import mongodb from 'mongodb'
+import mongodb from 'mongodb';
+import fs from 'fs'
+
+function timeout(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 describe("testing functions described in utils.js", () => {
-    function timeout(ms) {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-
     const MongoClient = mongodb.MongoClient
 
     let connection;
@@ -21,6 +22,9 @@ describe("testing functions described in utils.js", () => {
     afterAll(async () => {
         await connection.close();
         await db.close();
+    });
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     it("check if collection heroImg exists", async () => {
@@ -38,6 +42,20 @@ describe("testing functions described in utils.js", () => {
         expect(exists).toBe(true);
     });
 
+    it("readImages() reads the wrong folder should call console.error", async () => {
+        const spy = jest.spyOn(console, 'error').mockImplementation();
+        // readImages('./wrong-folder/', function () { });
+        let count = 0
+        readImages('./wrong-folder/', function (content) {
+            expect(content).toBeDefined()
+            count++
+        })
+        await timeout(50);
+        expect(count).toEqual(0)
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenLastCalledWith("the folder ./wrong-folder/ does not exist");
+
+    });
 
     it("readImages() should find and read all images in folder images", async () => {
         let count = 0
@@ -61,5 +79,11 @@ describe("testing functions described in utils.js", () => {
             .catch((error) => { console.error(error) })
 
         expect(imagefound).toBe(true);
+    });
+
+    it("getImageInDB() looks for an image that does not exist in mongo database", () => {
+        const idnumber = 12370
+        getImageInDB(idnumber, db).catch(e => expect(e).toMatch('imageid not found in db'));
+
     });
 });

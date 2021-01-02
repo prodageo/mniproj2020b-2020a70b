@@ -37,6 +37,7 @@
     "fs": "0.0.1-security",
     "mongodb": "^3.6.3",
     "redis": "^3.0.2",
+    "redis-mock": "^0.56.3",
     "socket.io": "^3.0.4"
   },
   "devDependencies": {
