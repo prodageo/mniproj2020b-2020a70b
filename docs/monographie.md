@@ -612,7 +612,7 @@ L'utilisateur se connecte au site web via son navigateur. Il clique sur le bouto
 
 <img src="./diag/diagramme_mise_en_oeuvre.png" width="600"/>
 
-Le diagramme ci-dessus décrit l'organisation de notre implémentation. Nous avons choisi d'utiliser javascript (Node.js) pour le code, MongoDB comme serveur de base de données (pour sa simplicité d'utilisation) et Redis pour le système de cache (pour les raisons évoquées précédemment). Le dossier images contient les 5 hero-images qui vont être stockées dans la base de données que l'on a appelé myHeroImages. Le fichier package.json va contenir toutes les dépendances nécessaires au fonctionnement du prototype et qui doivent être installées. 
+Le diagramme ci-dessus décrit l'organisation de notre implémentation. Nous avons choisi d'utiliser javascript (Node.js) pour le code, MongoDB comme serveur de base de données (pour sa simplicité d'utilisation) et Redis pour le système de cache (pour les raisons évoquées précédemment). Le dossier images contient les 5 hero-images qui vont être stockées dans la base de données que l'on a appelé myHeroImages. Le dossier tests contient tous nos tests unitaires et tests d'intégration. Le fichier package.json va contenir toutes les dépendances nécessaires au fonctionnement du prototype et qui doivent être installées. 
 
 Le dossier source contient le code gérant la partie back-end du prototype. Le dossier back est composé de deux fichiers :
 
