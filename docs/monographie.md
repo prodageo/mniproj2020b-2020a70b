@@ -629,7 +629,19 @@ Enfin il y a un fichier README.md qui présente les différentes étapes du lanc
 Voici un diagramme séquence système qui illustre l'implémentation de notre pattern Cache-aside :
 
 <img src="./diag/diag_seq_sys.png" width="600"/>
+
 ### C3. Résultats
 
+Afin de vérifier le bon fonctionnement de notre site web, nous avons réalisé des tests unitaires et d'intégration, décrites dans le dossier *__tests__*. Nous nous sommes concentrés principalement sur la partie back de notre implémentation.
+
+#### Tests unitaires 
+Notre code utilise deux fonctions, readImages et getImageInDB, définies dans *utils.js*. Un fichier test *utils.spec.js* a été donc créé afin de tester ces méthodes.
+
+#### Tests d'intégration
+Étant donné que la base du projet est la gestion du cache, il était important de tester redis en interaction avec la base de données.
+
+Tous les tests ont été réalisé avec Jest, a framework Javascript idéale pour la réalisation des tests. Cet outil nous a permis également de générer une couverture de code afin de détecter plus facilement des éventuelles lignes de code non testés.
+
+<img src="./wbs/tests-capture-ecran.png" width="800"/>
 
  
