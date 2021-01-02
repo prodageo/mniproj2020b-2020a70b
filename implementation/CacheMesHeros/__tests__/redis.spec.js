@@ -75,6 +75,16 @@ describe("testing cache using redis-mock", () => {
         redisclient.get(randomnumber.toString(), async (err, image) => {
             if (image) {
                 imageFound = true;
+            } else {
+                await getImageInDB(randomnumber, db)
+                    .then((result) => {
+                        imageObtenue = result
+                    })
+                    .catch((error) => { console.error(error) })
+
+                // On l'ajoute au cache
+                redisClient.setnx(randomnumber.toString(), imageObtenue.data)
+
             }
         });
         await timeout(50);
