@@ -26,6 +26,7 @@ consigne: http://prodageo.insa-rouen.fr/casimono/sujetprojmd/consignes.html
 | 0.6 | 01/12/2020 | Ajout de l'explication de la mesure de la facilité de migration|
 | 0.7 | 12/12/2020 | Ajout du jalon C |
 | 0.8 | 28/12/2020 | Ajout de la partie mise en oeuvre du jalon C |
+| 0.9 | 03/01/2021 | Ajout de la partie tests dans C3 |
 
 ## Questions d'amorce
 
@@ -630,7 +631,7 @@ Voici un diagramme séquence système qui illustre l'implémentation de notre pa
 
 <img src="./diag/diag_seq_sys.png" width="600"/>
 
-### C3. Résultats
+ ### C3. Tests
 
 Afin de vérifier le bon fonctionnement de notre site web, nous avons réalisé des tests unitaires et d'intégration, décrites dans le dossier *__tests__*. Nous nous sommes concentrés principalement sur la partie back de notre implémentation.
 
@@ -643,5 +644,7 @@ Notre code utilise deux fonctions, readImages et getImageInDB, définies dans *u
 Tous les tests ont été réalisé avec Jest, a framework Javascript idéale pour la réalisation des tests. Cet outil nous a permis également de générer une couverture de code afin de détecter plus facilement des éventuelles lignes de code non testés.
 
 <img src="./wbs/tests-capture-ecran.png" width="800"/>
+
+### C4. Résultats
 
  
