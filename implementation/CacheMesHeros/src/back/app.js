@@ -68,6 +68,7 @@ io.on('connect', (client) => {
   console.log('Client connecté')
 
   client.on('chercherImg', async () => {
+    console.time('AffichageImage')
     // On choisit un ID au hasard compris entre 1 et 5
     const randomnumber = Math.floor(Math.random() * 5) + 1
 
@@ -85,6 +86,7 @@ io.on('connect', (client) => {
         await getImageInDB(randomnumber, db)
           .then((result) => {
             imageObtenue = result
+            console.log(imageObtenue.id == randomnumber)
           })
           .catch((error) => { console.error(error) })
 
@@ -97,5 +99,6 @@ io.on('connect', (client) => {
         })
       }
     })
+    console.timeEnd('AffichageImage')
   })
 })
