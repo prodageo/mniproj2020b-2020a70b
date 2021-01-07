@@ -647,4 +647,20 @@ Tous les tests ont été réalisé avec Jest, a framework Javascript idéale pou
 
 ### C4. Résultats
 
+Le tableau ci-dessous décrit les mesures obtenues pour chaque métrique :
+
+| Métrique | Mesure | Notes |
+| -------- | ------ | ----- |
+| Temps d'affichage d'une image(en ms) | 0.1~0.5 | Cette mesure ne prend pas en compte le temps qu'il faut au navigateur pour visuellement afficher l'image. |
+| Taux de bonnes réponses | 100% | - |
+| Facilité d'utilisation | Facile | - |
+| Facilité de migration | Très facile | La mise en place de Redis est complètement indépendante de la base de données utilisée. |
+
+
+
+Au vu des résultats de mesure, on remarque que le temps mis pour récupérer une image dans le cache est très court, ce qui atteste de la vitesse du cache. On notera ici que, dans le cadre de ces mesures, l'affichage d'une image était rapide même lorsqu'il fallait aller chercher l'image dans la base. Cela s'explique par le fait que, pour ces tests, la base de données se trouvait en local, nullifiant ainsi complètement le temps nécessaire pour que la donnée atteigne le serveur de base de données. En revanche, les mesures de récupération d'une donnée en cache restent pertinente. Nous noterons aussi que, lors de ces mesures, il n'a jamais été nécessaire pour le cache de supprimer l'une de ces données, limitant l'écriture en son sein à une par image, la première fois où celle-ci est demandée. On peut expliquer cette persistence des données dans le cache par la faible taille de notre base de données.
+Il est aussi important de noter le taux de bonnes réponses du cache, qui est ici de 100%. 
+
+Enfin, les mesures de facilité d'utilisation et de migration ont été effectuées vis-à-vis du ressenti des développeurs. Il a été très facile d'utiliser Redis, bien qu'il s'agisse d'une technologie nouvelle pour nous. De plus, sa mise en place au sein de l'application était complètement indépendante du système de gestion de base de données choisi. Cela nous indique qu'il est possible au besoin de changer de base de données pour en utiliser une avec une plus grande capacité sans pour autant avoir à changer le code lié a Redis.
+
  
